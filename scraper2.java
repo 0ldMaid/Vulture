@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
-
 import java.awt.Toolkit;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,7 +37,7 @@ int ceny = (scrSize.height / 2) - (xzy / 2);
 long size1 = 111111;
 long size2 = 111111;
 int newitems[] = new int[12];
-int runs0 = 1000;
+//int runs0 = 1000;
 int runs1 = 40000;//10000
 int runs2 = 50000;
 int linknumber1 = 0;
@@ -149,7 +148,7 @@ Label labelx = new Label("x", Label.LEFT);
 Label buttonl[] = new Label[10];
 Label lpage1 = new Label("page1.", Label.LEFT);
 Label lpage2 = new Label("links.", Label.LEFT);
-Label pageinfo = new Label("CarbonScraper 2.6.0 \"vulture\"", Label.LEFT);
+Label pageinfo = new Label("CarbonScraper 2.6.1 \"vulture\"", Label.LEFT);
 Label pcl0 = new Label("Page Size: ", Label.CENTER);
 Label pcl1 = new Label("< PreCut >", Label.CENTER);
 Label pcl2 = new Label("Output: ", Label.CENTER);
@@ -200,24 +199,26 @@ Icon imx1;
 
 
 //start*************************************************
-	public scraper2(){//****************************
+public scraper2(){//****************************
 
-	super("Vulture 2.6.0");
+	super("Vulture 2.6.1");
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
 	setBackground(blackx);
 	setSize(xzx, xzy);
 	setLocation(cenx, ceny - 20);
 	setResizable(false);
-        addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){savex(); startstart = 2;}});
+    addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){savex(); startstart = 2; System.exit(0);}});
 
-        requestFocus();
+    requestFocus();
 	linklist[0] = new String("");
 
 	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
-        switchSCAPE[xloopx0][xloopx1][0] = "";
-        switchSCAPE[xloopx0][xloopx1][1] = "";
-	}//for
+
+		for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
+	        switchSCAPE[xloopx0][xloopx1][0] = "";
+	        switchSCAPE[xloopx0][xloopx1][1] = "";
+		}//for
+
 	}//for
 
 
@@ -230,37 +231,42 @@ Icon imx1;
 	imx1 = new ImageIcon(this.getClass().getResource("images/vulture1.png"));
 
 //set up files for scraping.
-	if(OXMX.exists()){}else{makexmxfile();}
-	if(OLSF.exists()){}else{makelsffile();}
+	if(OXMX.exists()){}
+	else{makexmxfile();}
+
+	if(OLSF.exists()){}
+	else{makelsffile();}
 
 //color and set up the scraping fields. 
 	for(int xloopx0 = 0; xloopx0 < 12; xloopx0++){//****************************
-	testfx[xloopx0] = new Label("Status: Test.", Label.LEFT);
-	testfx[xloopx0].setPreferredSize(new Dimension(488, 20));
-	testfx[xloopx0].setBackground(blackx);
-	testfx[xloopx0].setForeground(whitex);
 
-	f_xf_x[xloopx0][0] = new TextField("", 8);//codes
-	f_xf_x[xloopx0][0].setForeground(whitex);
-	f_xf_x[xloopx0][0].setBackground(blackx);
-	f_xf_x[xloopx0][1] = new TextField("", 8);//add before
-	f_xf_x[xloopx0][1].setForeground(whitex);
-	f_xf_x[xloopx0][1].setBackground(blackx);
-	f_xf_x[xloopx0][2] = new TextField("", 12);
-	f_xf_x[xloopx0][2].setForeground(whitex);
-	f_xf_x[xloopx0][2].setBackground(xblue);
-	f_xf_x[xloopx0][3] = new TextField("0", 1);
-	f_xf_x[xloopx0][3].setForeground(whitex);
-	f_xf_x[xloopx0][3].setBackground(blackx);
-	f_xf_x[xloopx0][4] = new TextField("", 12);
-	f_xf_x[xloopx0][4].setForeground(whitex);
-	f_xf_x[xloopx0][4].setBackground(xblue);
-	f_xf_x[xloopx0][5] = new TextField("0", 1);//add after
-	f_xf_x[xloopx0][5].setForeground(whitex);
-	f_xf_x[xloopx0][5].setBackground(blackx);
+		testfx[xloopx0] = new Label("Status: Test.", Label.LEFT);
+		testfx[xloopx0].setPreferredSize(new Dimension(488, 20));
+		testfx[xloopx0].setBackground(blackx);
+		testfx[xloopx0].setForeground(whitex);
+
+		f_xf_x[xloopx0][0] = new TextField("", 8);//codes
+		f_xf_x[xloopx0][0].setForeground(whitex);
+		f_xf_x[xloopx0][0].setBackground(blackx);
+		f_xf_x[xloopx0][1] = new TextField("", 8);//add before
+		f_xf_x[xloopx0][1].setForeground(whitex);
+		f_xf_x[xloopx0][1].setBackground(blackx);
+		f_xf_x[xloopx0][2] = new TextField("", 12);
+		f_xf_x[xloopx0][2].setForeground(whitex);
+		f_xf_x[xloopx0][2].setBackground(xblue);
+		f_xf_x[xloopx0][3] = new TextField("0", 1);
+		f_xf_x[xloopx0][3].setForeground(whitex);
+		f_xf_x[xloopx0][3].setBackground(blackx);
+		f_xf_x[xloopx0][4] = new TextField("", 12);
+		f_xf_x[xloopx0][4].setForeground(whitex);
+		f_xf_x[xloopx0][4].setBackground(xblue);
+		f_xf_x[xloopx0][5] = new TextField("0", 1);//add after
+		f_xf_x[xloopx0][5].setForeground(whitex);
+		f_xf_x[xloopx0][5].setBackground(blackx);
+
 	}//for************************************************************
 
-System.out.println("vs " + nm.vulture_settings.length());
+//System.out.println("vs " + vulture_settings.length());
 //nm.vulture_settings = "";
 
 	f_xf_x[0][0].setText("<*sk*>");
@@ -281,10 +287,12 @@ System.out.println("vs " + nm.vulture_settings.length());
 	lpage2.setForeground(whitex);
 
 	for(int xloopx0 = 0; xloopx0 < 10; xloopx0++){//********
-	buttonl[xloopx0] = new Label("Status: Test.", Label.LEFT);
-	buttonl[xloopx0].setPreferredSize(new Dimension(110, 20));
-	buttonl[xloopx0].setBackground(blackx);
-	buttonl[xloopx0].setForeground(whitex);
+
+		buttonl[xloopx0] = new Label("Status: Test.", Label.LEFT);
+		buttonl[xloopx0].setPreferredSize(new Dimension(110, 20));
+		buttonl[xloopx0].setBackground(blackx);
+		buttonl[xloopx0].setForeground(whitex);
+
 	}//for*****************************************
 
 
@@ -462,8 +470,8 @@ System.out.println("vs " + nm.vulture_settings.length());
 	pageinfo.setForeground(whitex);
 
 
-//make jpanels 
-        //JPanel jp0 = new JPanel();
+	//make jpanels 
+    //JPanel jp0 = new JPanel();
 	jp0.setPreferredSize(new Dimension(1000, 260));
 	jp0.setBackground(blackx);
 	jp0.setBorder(BorderFactory.createLineBorder(bluex2));
@@ -499,13 +507,15 @@ System.out.println("vs " + nm.vulture_settings.length());
 	jp1.setBackground(blackx);
 	jp1.setBorder(BorderFactory.createLineBorder(bluex2));
 	for(int xloopx0 = 0; xloopx0 < 6; xloopx0++){//********
-	jp1.add(testfx[xloopx0]);
-	jp1.add(f_xf_x[xloopx0][0]);
-	jp1.add(f_xf_x[xloopx0][1]);
-	jp1.add(f_xf_x[xloopx0][2]);
-	jp1.add(f_xf_x[xloopx0][3]);
-	jp1.add(f_xf_x[xloopx0][4]);
-	jp1.add(f_xf_x[xloopx0][5]);
+
+		jp1.add(testfx[xloopx0]);
+		jp1.add(f_xf_x[xloopx0][0]);
+		jp1.add(f_xf_x[xloopx0][1]);
+		jp1.add(f_xf_x[xloopx0][2]);
+		jp1.add(f_xf_x[xloopx0][3]);
+		jp1.add(f_xf_x[xloopx0][4]);
+		jp1.add(f_xf_x[xloopx0][5]);
+
 	}//for*****************************************
 
 
@@ -514,14 +524,17 @@ System.out.println("vs " + nm.vulture_settings.length());
 	jp2.setPreferredSize(new Dimension(490, 325));
 	jp2.setBackground(blackx);
 	jp2.setBorder(BorderFactory.createLineBorder(bluex2));
+
 	for(int xloopx0 = 6; xloopx0 < 12; xloopx0++){//********
-	jp2.add(testfx[xloopx0]);
-	jp2.add(f_xf_x[xloopx0][0]);
-	jp2.add(f_xf_x[xloopx0][1]);
-	jp2.add(f_xf_x[xloopx0][2]);
-	jp2.add(f_xf_x[xloopx0][3]);
-	jp2.add(f_xf_x[xloopx0][4]);
-	jp2.add(f_xf_x[xloopx0][5]);
+
+		jp2.add(testfx[xloopx0]);
+		jp2.add(f_xf_x[xloopx0][0]);
+		jp2.add(f_xf_x[xloopx0][1]);
+		jp2.add(f_xf_x[xloopx0][2]);
+		jp2.add(f_xf_x[xloopx0][3]);
+		jp2.add(f_xf_x[xloopx0][4]);
+		jp2.add(f_xf_x[xloopx0][5]);
+
 	}//for*****************************************
 
 
@@ -542,7 +555,7 @@ System.out.println("vs " + nm.vulture_settings.length());
 	jp3.add(buttonl[5]);
 
 
-//****************************
+	//****************************
 
 
 	//switchHTML[0] = "http://www.carbonscraper.com/test/test1.html"; switchHTML[1] = switchHTML[0]; savex(); System.exit(0); 
@@ -552,55 +565,15 @@ System.out.println("vs " + nm.vulture_settings.length());
 	if(file_f3.exists()){}
 	//else{System.exit(0);}
 
-//****************************
+	//****************************
 
 	System.out.println("carbonkeyx " + carbonkeyx);
 
-       if(carbonkey.equals(carbonkeyx)){
+    JMenuBar menuBar = new JMenuBar();
+    setJMenuBar(menuBar);
 
-	//Label spacelabel1 = new Label("", Label.CENTER);
-	spacelabel1.setPreferredSize(new Dimension(990, 150));
-
-	JLabel spacelabel2 = new JLabel("", imx1 , JLabel.CENTER);
-	spacelabel2.setPreferredSize(new Dimension(490, 230));
-
-	bkey.setMargin(new Insets(0, 0, 0, 0));  
-	bkey.addActionListener(this);
-	bkey.setPreferredSize(new Dimension(60, 20));
-	bkey.setIcon(imx0);
-	bkey.setHorizontalTextPosition(JButton.CENTER);
-	bkey.setForeground(whitex);
-
-	enterkey_label.setPreferredSize(new Dimension(200, 20));
-	enterkey_label.setBackground(blackx);
-	enterkey_label.setForeground(whitex);
-
-	//JPanel jpk = new JPanel();
-	jpk.setPreferredSize(new Dimension(500, 300));
-	jpk.setBackground(blackx);
-	jpk.setBorder(BorderFactory.createLineBorder(bluex2));
-	jpk.add(spacelabel2);
-	jpk.add(enterkey_label); 
-	//jpk.add(enterkey_text); 
-	jpk.add(bkey);
-
-	//Container cp = getContentPane();
-	cp_container.setLayout(new FlowLayout());
-	cp_container.setBackground(darkgray01);
-	cp_container.setForeground(whitex);
-	cp_container.add(spacelabel1);
-	cp_container.add(jpk);
-
-	enterkey_text.requestFocus();
-
-       }//if
-       else{
-
-        JMenuBar menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
-
-        JMenu fileMenu = new JMenu("File");
-        menuBar.add(fileMenu);
+    JMenu fileMenu = new JMenu("File");
+    menuBar.add(fileMenu);
 
 	//Container cp = getContentPane();
 	cp_container.setLayout(new FlowLayout());
@@ -615,8 +588,6 @@ System.out.println("vs " + nm.vulture_settings.length());
 	carbonkeyx = new String("OPEN");
 	savex();
 
-       }//else
-
 
 	loadll();
 	showinfox1();
@@ -626,7 +597,7 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	//if(workx == false && !carbonkey.equals(carbonkeyx)){t1.setText(infox6);}
 
-	}//Vulture*************************************
+}//Vulture*************************************
 
 
 
@@ -641,24 +612,30 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 
 	public void makelsffile(){
-	//System.out.println("Make LSF");
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
-        out.write("");
-        out.close();
-        }catch (IOException e){t1.setText("Make LSF failed.");}
+
+		//System.out.println("Make LSF");
+		try {
+
+	        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
+	        out.write("");
+	        out.close();
+
+	    }catch (IOException e){t1.setText("Make LSF failed.");}
 
 	}//makelsffile
 
 
 
 	public void makexmxfile(){
-	//System.out.println("Make XMX");
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("XMX.CSV"));
-        out.write("");
-        out.close();
-        }catch (IOException e){t1.setText("Make XMX failed.");}
+
+		//System.out.println("Make XMX");
+		try {
+
+	        BufferedWriter out = new BufferedWriter(new FileWriter("XMX.CSV"));
+	        out.write("");
+	        out.close();
+
+	    }catch (IOException e){t1.setText("Make XMX failed.");}
 
 	}//makexmxfile
 
@@ -673,22 +650,27 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void resetgold(){
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	for(int xloopx1 = 0; xloopx1 < cuttype; xloopx1++){//**********
+		for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
 
-	GOLDX[xloopx0][xloopx1] = "null";
+			for(int xloopx1 = 0; xloopx1 < cuttype; xloopx1++){//**********
 
-	}//for
-	}//for
+				GOLDX[xloopx0][xloopx1] = "null";
+
+			}//for
+
+		}//for
+
 	}//resetgold
 
 
 
 	public void resetnumber(){
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	newitems[xloopx0] = 0;
-	}//for
+		for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
+
+			newitems[xloopx0] = 0;
+
+		}//for
 
 	}//resetnumber
 
@@ -703,37 +685,54 @@ System.out.println("vs " + nm.vulture_settings.length());
 //ping*********************************************************************
 
 
-	public void ping(){//get web page
+	public void ping() {//get web page
 
-	GETHTML1 = blank;
-	GETHTML2 = blank;
+		GETHTML1 = blank;
+		GETHTML2 = blank;
 
-	lineb1.replace(0, lineb1.length(), "");
-	lineb2.replace(0, lineb2.length(), "");
+		lineb1.replace(0, lineb1.length(), "");
+		lineb2.replace(0, lineb2.length(), "");
 
-	try {
-	t1.setText("Ping 1.");
-	URL url = new URL(HTMLGO);
-	BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+		try {
 
-	      xlinex = blank;
-	      while ((xlinex = in.readLine()) != null){lineb1.append(xlinex); lineb2.append(xlinex + "\n");}
-	      in.close();
+			t1.setText("Ping 1.");
+			URL url = new URL(HTMLGO);
+			HttpURLConnection myURLConnection = (HttpURLConnection) url.openConnection();
 
-	}catch (IOException e){t1.setText("URL Address Falure.");}// tabxx();
+			myURLConnection.setRequestProperty("Authorization", "basicAuth");
+			myURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0");
+			myURLConnection.setRequestMethod("GET");
+			myURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			//myURLConnection.setRequestProperty("Content-Length", "" + postData.getBytes().length);
+			myURLConnection.setRequestProperty("Content-Language", "en-US");
+			myURLConnection.setUseCaches(false);
+			myURLConnection.setDoInput(true);
+			myURLConnection.setDoOutput(true);
 
-	t1.setText("Ping 2.");
 
-	GETHTML1 = lineb1.toString();
-	GETHTML2 = lineb2.toString();
+			BufferedReader in = new BufferedReader(new InputStreamReader(myURLConnection.getInputStream()));
 
-	if(to_lower_caseb){
-	GETHTML1 = GETHTML1.toLowerCase();
-	GETHTML2 = GETHTML2.toLowerCase();
-	t1.setText(GETHTML2);
-	}//iflower case
+		    xlinex = blank;
+		    while ((xlinex = in.readLine()) != null){lineb1.append(xlinex); lineb2.append(xlinex + "\n");}
+		    in.close();
 
-	pcl0.setText("Input: " + Integer.toString(GETHTML1.length() / 1024) + "kb");
+
+			t1.setText("Ping 2.");
+
+			GETHTML1 = lineb1.toString();
+			GETHTML2 = lineb2.toString();
+
+			if (to_lower_caseb) {
+
+				GETHTML1 = GETHTML1.toLowerCase();
+				GETHTML2 = GETHTML2.toLowerCase();
+				t1.setText(GETHTML2);
+
+			}//iflower case
+
+		} catch (Exception e) {t1.setText(e.getMessage());}// tabxx();
+
+		pcl0.setText("Input: " + Integer.toString(GETHTML1.length() / 1024) + "kb");
 
 	}//ping 
 
@@ -749,10 +748,10 @@ System.out.println("vs " + nm.vulture_settings.length());
 //fired from button bx0. Go to the given page, show content, stop.
 	public void gox(){
 
-	HTMLGO = (MHTF.getText());
-	lpage1.setText(HTMLGO);
-	ping();
-	t1.setText(GETHTML2);
+		HTMLGO = (MHTF.getText());
+		lpage1.setText(HTMLGO);
+		ping();
+		t1.setText(GETHTML2);
 
 	}//ssx
 
@@ -762,18 +761,21 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 //save the full page of the site.
 	public void savepage(){
-	System.out.println(HTMLGO + ".html");
-	System.out.println(GETHTML2.length());
 
-	ix1 = HTMLGO.lastIndexOf("/");
-	if(ix1 == -1){}
-	else{cx0 = HTMLGO.substring(ix1 + 1, HTMLGO.length());}
+		System.out.println(HTMLGO + ".html");
+		System.out.println(GETHTML2.length());
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter(cx0 + ".html"));
-        out.write("here");
-        out.close();
-        }catch (IOException e){t1.setText("Save full page failed.");}
+		ix1 = HTMLGO.lastIndexOf("/");
+		if(ix1 == -1){}
+		else {cx0 = HTMLGO.substring(ix1 + 1, HTMLGO.length());}
+
+		try {
+
+	        BufferedWriter out = new BufferedWriter(new FileWriter(cx0 + ".html"));
+	        out.write("here");
+	        out.close();
+
+	    } catch (IOException e){t1.setText("Save full page failed.");}
 
 	}//savefile
 
@@ -784,17 +786,18 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void replacename(){
 
-	for(int xloopx0 = 0; xloopx0 < runs1; xloopx0++){//********
+		for(int xloopx0 = 0; xloopx0 < runs1; xloopx0++){//********
 
-	ix7 = xsaveoverx.indexOf(" ");
-	if(ix7 == -1){break;}
-	else{
-	
-	xsaveoverx = xsaveoverx.substring(0, ix7) + "_" + xsaveoverx.substring(ix7 + 1, xsaveoverx.length());
+			ix7 = xsaveoverx.indexOf(" ");
+			if(ix7 == -1){break;}
+			else{
+			
+				xsaveoverx = xsaveoverx.substring(0, ix7) + "_" + xsaveoverx.substring(ix7 + 1, xsaveoverx.length());
 
-	}//else
-	}//for
-	//System.out.println(xsaveoverx);
+			}//else
+
+		}//for
+		//System.out.println(xsaveoverx);
 	}//replacename
 
 
@@ -805,86 +808,104 @@ System.out.println("vs " + nm.vulture_settings.length());
 //scrape picture or file from given URL.
 	public void getfile(){
 
-	//getfilex = new String("");
-	//filename = new String(filename);
-	//System.out.println(getfilex);
-	//System.out.println(filename);
+		//getfilex = new String("");
+		//filename = new String(filename);
+		//System.out.println(getfilex);
+		//System.out.println(filename);
 
 
 
-	for(int xloopx0 = 0; xloopx0 < runs0; xloopx0++){//********
-	ix6 = filename.indexOf("/");
-	if(ix6 > -1){//************************
+		while (true) {
 
-	filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
+			ix6 = filename.indexOf("/");
 
-	}//if**********************************
-	else{break;}
-	}//FOR
+			if(ix6 > -1){//************************
 
+				filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
 
-	for(int xloopx0 = 0; xloopx0 < runs0; xloopx0++){//********
-	ix6 = filename.indexOf("\"");
-	if(ix6 > -1){//************************
+			}//if**********************************
+			else{break;}
 
-	filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
-
-	}//if**********************************
-	else{break;}
-	}//FOR
+		}//FOR
 
 
-	for(int xloopx0 = 0; xloopx0 < runs0; xloopx0++){//********
-	ix6 = filename.indexOf(">");
-	if(ix6 > -1){//************************
+		while (true) {
 
-	filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
+			ix6 = filename.indexOf("\"");
 
-	}//if**********************************
-	else{break;}
-	}//FOR
+			if(ix6 > -1){//************************
 
+				filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
 
-	for(int xloopx0 = 0; xloopx0 < runs0; xloopx0++){//********
-	ix6 = filename.indexOf("<");
-	if(ix6 > -1){//************************
+			}//if**********************************
+			else{break;}
 
-	filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
-
-	}//if**********************************
-	else{break;}
-	}//FOR
+		}//FOR
 
 
-	for(int xloopx0 = 0; xloopx0 < runs0; xloopx0++){//********
-	ix6 = filename.indexOf("?");
-	if(ix6 > -1){//************************
+		while (true) {
 
-	filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
+			ix6 = filename.indexOf(">");
 
-	}//if**********************************
-	else{break;}
-	}//FOR
+			if(ix6 > -1){//************************
+
+				filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
+
+			}//if**********************************
+			else{break;}
+
+		}//FOR
+
+
+		while (true) {
+
+			ix6 = filename.indexOf("<");
+
+			if(ix6 > -1){//************************
+
+				filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
+
+			}//if**********************************
+			else{break;}
+
+		}//FOR
+
+
+		while (true) {
+
+			ix6 = filename.indexOf("?");
+
+			if(ix6 > -1){//************************
+
+				filename = filename.substring(0, ix6) + filename.substring(ix6 + 1, filename.length());
+
+			}//if**********************************
+			else{break;}
+
+		}//FOR
 
 
 
+		cx5 = file_f3.getAbsolutePath();
+		cx5 = cx5.substring(0, cx5.length() - 7) + "cs_images\\";
+		//System.out.println(cx5);
+		//System.exit(0);
+		if (file_f4.exists()){}
+		else{t1.setText("Make new Image folder."); file_f4 = new File(cx5); file_f4.mkdirs();}
 
-	cx5 = file_f3.getAbsolutePath();
-	cx5 = cx5.substring(0, cx5.length() - 7) + "cs_images\\";
-	//System.out.println(cx5);
-	//System.exit(0);
-	if(file_f4.exists()){}else{t1.setText("Make new Image folder."); file_f4 = new File(cx5); file_f4.mkdirs();}
+		try {
 
-	try{
-	BufferedInputStream in = new BufferedInputStream(new URL(getfilex).openStream());
-	BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(cx5 + filename));
-	byte xdatax[] = new byte[10240];
-	while((bytesRead = in.read(xdatax)) != -1){bout.write(xdatax, 0, bytesRead);}
-	bout.close();
-	in.close();
-	}catch (IOException e){t1.setText("get file fail");}
+			BufferedInputStream in = new BufferedInputStream(new URL(getfilex).openStream());
+			BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(cx5 + filename));
+			byte xdatax[] = new byte[10240];
+			while((bytesRead = in.read(xdatax)) != -1){bout.write(xdatax, 0, bytesRead);}
+			bout.close();
+			in.close();
 
-	//System.exit(0);
+		} catch (IOException e){t1.setText("get file fail");}
+
+		//System.exit(0);
+
 	}//
 
 
@@ -905,25 +926,26 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void precut(){
 	
-	cx1 = GETHTML1;
+		cx1 = GETHTML1;
 
-	ix1 = cx1.indexOf(searchtop[0].getText());
-	ix2 = cx1.indexOf(searchtop[1].getText());
-	cx2 = searchtop[1].getText();
-	if(ix1 > 0 && ix2 > 0){
+		ix1 = cx1.indexOf(searchtop[0].getText());
+		ix2 = cx1.indexOf(searchtop[1].getText());
+		cx2 = searchtop[1].getText();
 
-	GETHTML1 = cx1.substring(ix1, ix2 + cx2.length());
-	pcl1.setText("<Precut Pass>");
-	t1.setText(GETHTML1);
+		if(ix1 > 0 && ix2 > 0){
 
-	}//if
-	else{}
+			GETHTML1 = cx1.substring(ix1, ix2 + cx2.length());
+			pcl1.setText("<Precut Pass>");
+			t1.setText(GETHTML1);
 
-	pcl2.setText("Output: " + Integer.toString(GETHTML1.length() / 1024) + "kb");
+		}//if
+		else{}
 
-	if(ix1 == -1){pcl1.setText("precut fail(1)");}
-	if(ix2 == -1){pcl1.setText("precut fail(2)");}
-	if(ix1 == -1 && ix2 == -1){pcl1.setText("precut fail(1 & 2)");}
+		pcl2.setText("Output: " + Integer.toString(GETHTML1.length() / 1024) + "kb");
+
+		if(ix1 == -1){pcl1.setText("precut fail(1)");}
+		if(ix2 == -1){pcl1.setText("precut fail(2)");}
+		if(ix1 == -1 && ix2 == -1){pcl1.setText("precut fail(1 & 2)");}
 
 	}//precut
 
@@ -936,64 +958,69 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 //test cut the HTML to show testfx output for user. 
 	public void testcutx(){
-	
-	firstlast = true;
-	cx1 = GETHTML1;
-	ix3 = 0;
-	ix5 = 0;
+		
+		firstlast = true;
+		cx1 = GETHTML1;
+		ix3 = 0;
+		ix5 = 0;
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
-	cx1 = GETHTML1;
-	newitems[xloopx0] = 0;
-	for(int xloopx1 = 0; xloopx1 < cuttype; xloopx1++){//********
-	if(f_xf_x[xloopx0][0].getText().equals("<*image*>")){}
-	if(f_xf_x[xloopx0][0].getText().equals("<*image*1*>")){}
-	if(f_xf_x[xloopx0][0].getText().equals("<*image*2*>")){}
-	if(f_xf_x[xloopx0][0].getText().equals("<*last*>")){firstlast = false;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*url*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + HTMLGO); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*sk0*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[0][savehold1]); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*sk1*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[1][savehold1]); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*sk2*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[2][savehold1]); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*page*>")){testfx[xloopx0].setText("Scrape full page to file."); break;}
-	if(f_xf_x[xloopx0][2].getText().length() == 0){break;}
+		for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
 
-	//System.out.println("start " + cx1.length());
+			cx1 = GETHTML1;
+			newitems[xloopx0] = 0;
 
-	if(firstlast){ix1 = cx1.indexOf(f_xf_x[xloopx0][2].getText());}
-	else{ix1 = cx1.lastIndexOf(f_xf_x[xloopx0][2].getText());}
+			for(int xloopx1 = 0; xloopx1 < cuttype; xloopx1++){//********
 
-	if(ix1 < 0){if(xloopx1 == 0){t1.setText("test cut fail1");} break;}
-	else{
+				if(f_xf_x[xloopx0][0].getText().equals("<*image*>")){}
+				if(f_xf_x[xloopx0][0].getText().equals("<*image*1*>")){}
+				if(f_xf_x[xloopx0][0].getText().equals("<*image*2*>")){}
+				if(f_xf_x[xloopx0][0].getText().equals("<*last*>")){firstlast = false;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*url*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + HTMLGO); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*sk0*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[0][savehold1]); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*sk1*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[1][savehold1]); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*sk2*>")){testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[2][savehold1]); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*page*>")){testfx[xloopx0].setText("Scrape full page to file."); break;}
+				if(f_xf_x[xloopx0][2].getText().length() == 0){break;}
 
-	cx2 = cx1.substring(ix1 + Integer.parseInt(f_xf_x[xloopx0][3].getText()), cx1.length());
-	ix2 = cx2.indexOf(f_xf_x[xloopx0][4].getText());
+				//System.out.println("start " + cx1.length());
 
-	if(ix2 < 0){if(xloopx1 == 0){t1.setText("test cut fail2");} break;}
-	else{
+				if(firstlast){ix1 = cx1.indexOf(f_xf_x[xloopx0][2].getText());}
+				else{ix1 = cx1.lastIndexOf(f_xf_x[xloopx0][2].getText());}
 
-//scraping finished.
-	cx3 = cx2.substring(0, ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()));
-//scraping finished.
+				if(ix1 < 0){if(xloopx1 == 0){t1.setText("test cut fail1");} break;}
+				else{
 
-	if(f_xf_x[xloopx0][0].getText().equals("<*save*>")){}
-	if(f_xf_x[xloopx0][0].getText().equals("<*add*:*>")){cx3 = cx3 + "<*:*>";}
-	if(f_xf_x[xloopx0][0].getText().equals("<*add*,*>")){cx3 = cx3 + "<*,*>";}
-	if(f_xf_x[xloopx0][0].getText().equals("<*add*+*>")){cx3 = cx3 + "<*+*>";}
+					cx2 = cx1.substring(ix1 + Integer.parseInt(f_xf_x[xloopx0][3].getText()), cx1.length());
+					ix2 = cx2.indexOf(f_xf_x[xloopx0][4].getText());
 
-	testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + cx3);
-	//GOLDX[xloopx0][xloopx1] = cx3;
-	cx1 = cx2.substring(ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()), cx2.length());
+					if(ix2 < 0){if(xloopx1 == 0){t1.setText("test cut fail2");} break;}
+					else{
 
-	newitems[xloopx0]++;
-	ix5 = ix5 + 1;
+					//scraping finished.
+						cx3 = cx2.substring(0, ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()));
+					//scraping finished.
 
-	buttonl[1].setText(ix5 + " item(s)");
+						if(f_xf_x[xloopx0][0].getText().equals("<*save*>")){}
+						if(f_xf_x[xloopx0][0].getText().equals("<*add*:*>")){cx3 = cx3 + "<*:*>";}
+						if(f_xf_x[xloopx0][0].getText().equals("<*add*,*>")){cx3 = cx3 + "<*,*>";}
+						if(f_xf_x[xloopx0][0].getText().equals("<*add*+*>")){cx3 = cx3 + "<*+*>";}
 
-	}//else
-	}//else
+						testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + cx3);
+						//GOLDX[xloopx0][xloopx1] = cx3;
+						cx1 = cx2.substring(ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()), cx2.length());
 
-	}//for
-	}//for
+						newitems[xloopx0]++;
+						ix5 = ix5 + 1;
+
+						buttonl[1].setText(ix5 + " item(s)");
+
+					}//else
+
+				}//else
+
+			}//for
+
+		}//for
 
 	}//testcutx
 
@@ -1006,97 +1033,105 @@ System.out.println("vs " + nm.vulture_settings.length());
 //the main class of the program, used to scrape the items from the HTML page.
 	public void cutx(){
 	
-	cx1 = GETHTML1;
-	ix3 = 0;
-	ix4 = 0;
-	ix5 = 0;
+		cx1 = GETHTML1;
+		ix3 = 0;
+		ix4 = 0;
+		ix5 = 0;
 
-	picturenumber2 = 0;
-
-
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//cutnumber
-	 cx1 = GETHTML1;
-	 newitems[xloopx0] = 0;
-	 //picturenumber2 = 0;
-	for(int xloopx1 = 0; xloopx1 < cuttype; xloopx1++){//cuttype
-	 firstlast = true;
-	 findimage = false;
-	 ximage_1x = false;
-	 ximage_2x = false;
-	if(f_xf_x[xloopx0][0].getText().equals("<*last*>")){firstlast = false;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*image*>")){findimage = true;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*image*1*>")){findimage = true; ximage_1x = true;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*image*2*>")){findimage = true; ximage_2x = true;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*url*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + HTMLGO; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + HTMLGO); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*sk0*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + loadedGOLD[0][savehold1]; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[0][savehold1]); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*sk1*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + loadedGOLD[1][savehold1]; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[1][savehold1]); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*sk2*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + loadedGOLD[2][savehold1]; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[2][savehold1]); break;}
-	if(f_xf_x[xloopx0][0].getText().equals("<*page*>")){ix3 = xloopx0; ix4 = xloopx1; savepage();}
-	if(f_xf_x[xloopx0][2].getText().length() == 0){break;}
-
-	if(firstlast){ix1 = cx1.indexOf(f_xf_x[xloopx0][2].getText());}
-	else{ix1 = cx1.lastIndexOf(f_xf_x[xloopx0][2].getText());}
-
-	//System.out.println(xloopx0);
-
-	if(ix1 == -1){if(xloopx1 == 0){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText(); newitems[xloopx0]++;} else{t1.setText("cut break1");} break;}
-	else{
-
-//System.out.println("test1. " + ix1 + " " + f_xf_x[xloopx0][3].getText() + " " + cx1.length());
-	if(ix1 + Integer.parseInt(f_xf_x[xloopx0][3].getText()) < 0){break;}
-	cx2 = cx1.substring(ix1 + Integer.parseInt(f_xf_x[xloopx0][3].getText()), cx1.length());
-//System.out.println("test2. " + cx1.length());
-	ix2 = cx2.indexOf(f_xf_x[xloopx0][4].getText());
+		picturenumber2 = 0;
 
 
-	if(ix2 < 0){if(xloopx1 == 0){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText(); newitems[xloopx0]++;} else{t1.setText("cut break2");} break;}
-	else{
+		for (int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++) {//cutnumber
 
-//scraping is done.
-	if(ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()) < 0){System.out.println("falure 1188."); break;}
-	cx3 = cx2.substring(0, ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()));
-//scraping is done.
+			cx1 = GETHTML1;
+			newitems[xloopx0] = 0;
+			//picturenumber2 = 0;
+			for (int xloopx1 = 0; xloopx1 < cuttype; xloopx1++) {//cuttype
 
-//check info after scraping is done. Apply to needed areas.
-	if(f_xf_x[xloopx0][0].getText().equals("<*save*>")){xsaveoverx = cx3; replacename();}
-	if(f_xf_x[xloopx0][0].getText().equals("<*add*:*>")){cx3 = cx3 + "<*:*>";}
-	if(f_xf_x[xloopx0][0].getText().equals("<*add*,*>")){cx3 = cx3 + "<*,*>";}
-	if(f_xf_x[xloopx0][0].getText().equals("<*add*+*>")){cx3 = cx3 + "<*+*>";}
+				firstlast = true;
+				findimage = false;
+				ximage_1x = false;
+				ximage_2x = false;
+				if(f_xf_x[xloopx0][0].getText().equals("<*last*>")){firstlast = false;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*image*>")){findimage = true;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*image*1*>")){findimage = true; ximage_1x = true;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*image*2*>")){findimage = true; ximage_2x = true;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*url*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + HTMLGO; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + HTMLGO); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*sk0*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + loadedGOLD[0][savehold1]; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[0][savehold1]); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*sk1*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + loadedGOLD[1][savehold1]; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[1][savehold1]); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*sk2*>")){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText() + loadedGOLD[2][savehold1]; newitems[xloopx0]++; testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + loadedGOLD[2][savehold1]); break;}
+				if(f_xf_x[xloopx0][0].getText().equals("<*page*>")){ix3 = xloopx0; ix4 = xloopx1; savepage();}
+				if(f_xf_x[xloopx0][2].getText().length() == 0){break;}
 
-//save scrape for printing.
-	GOLDX[xloopx0][xloopx1] = (f_xf_x[xloopx0][1].getText() + cx3);
-	testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + cx3);
+				if(firstlast){ix1 = cx1.indexOf(f_xf_x[xloopx0][2].getText());}
+				else{ix1 = cx1.lastIndexOf(f_xf_x[xloopx0][2].getText());}
 
-//System.out.println(xloopx1);
-//get potential image file******************************************
-	if(findimage){
+				//System.out.println(xloopx0);
 
-	ix3 = GOLDX[xloopx0][xloopx1].lastIndexOf("/");
-	 if(ix3 == -1){t1.setText("image name falure in cutx.");}
-	 else{
-		if(ximage_1x){filename = + (10000 + picturenumber1) + ".jpg";}
-		else if(ximage_2x){ix4 = HTMLGO.lastIndexOf("/"); filename = xsaveoverx + "_" + picturenumber2 + ".jpg";}
-		else{filename = GOLDX[xloopx0][xloopx1].substring(ix3 + 1, GOLDX[xloopx0][xloopx1].length());}
-	 getfilex = GOLDX[xloopx0][xloopx1].substring(0, GOLDX[xloopx0][xloopx1].length());
-	 getfile(); GOLDX[xloopx0][xloopx1] = "Image file name: " + filename;
-	 picturenumber1++;
-	 picturenumber2++;
-	 }//else
-	}//if findimage
-//get potential image file stop.
+				if(ix1 == -1){if(xloopx1 == 0){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText(); newitems[xloopx0]++;} else{t1.setText("cut break1");} break;}
+				else{
+
+					//System.out.println("test1. " + ix1 + " " + f_xf_x[xloopx0][3].getText() + " " + cx1.length());
+					if(ix1 + Integer.parseInt(f_xf_x[xloopx0][3].getText()) < 0){break;}
+					cx2 = cx1.substring(ix1 + Integer.parseInt(f_xf_x[xloopx0][3].getText()), cx1.length());
+					//System.out.println("test2. " + cx1.length());
+					ix2 = cx2.indexOf(f_xf_x[xloopx0][4].getText());
 
 
-	cx1 = cx2.substring(ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()), cx2.length());
-	newitems[xloopx0]++;
-	ix5 = ix5 + 1;
+					if(ix2 < 0){if(xloopx1 == 0){GOLDX[xloopx0][xloopx1] = f_xf_x[xloopx0][1].getText(); newitems[xloopx0]++;} else{t1.setText("cut break2");} break;}
+					else{
 
-	buttonl[2].setText("Cut: " + ix5 + " item(s)");
+						//scraping is done.
+						if(ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()) < 0){System.out.println("falure 1188."); break;}
+						cx3 = cx2.substring(0, ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()));
+						//scraping is done.
 
-	}//else
-	}//else
+						//check info after scraping is done. Apply to needed areas.
+						if(f_xf_x[xloopx0][0].getText().equals("<*save*>")){xsaveoverx = cx3; replacename();}
+						if(f_xf_x[xloopx0][0].getText().equals("<*add*:*>")){cx3 = cx3 + "<*:*>";}
+						if(f_xf_x[xloopx0][0].getText().equals("<*add*,*>")){cx3 = cx3 + "<*,*>";}
+						if(f_xf_x[xloopx0][0].getText().equals("<*add*+*>")){cx3 = cx3 + "<*+*>";}
 
-	}//for: cuttype
-	}//for: cutnumber
+						//save scrape for printing.
+						GOLDX[xloopx0][xloopx1] = (f_xf_x[xloopx0][1].getText() + cx3);
+						testfx[xloopx0].setText(f_xf_x[xloopx0][1].getText() + cx3);
+
+						//System.out.println(xloopx1);
+						//get potential image file******************************************
+						if(findimage){
+
+							ix3 = GOLDX[xloopx0][xloopx1].lastIndexOf("/");
+
+							if(ix3 == -1){t1.setText("image name falure in cutx.");}
+							else{
+
+								 if(ximage_1x){filename = + (10000 + picturenumber1) + ".jpg";}
+								 else if(ximage_2x){ix4 = HTMLGO.lastIndexOf("/"); filename = xsaveoverx + "_" + picturenumber2 + ".jpg";}
+								 else{filename = GOLDX[xloopx0][xloopx1].substring(ix3 + 1, GOLDX[xloopx0][xloopx1].length());}
+								 getfilex = GOLDX[xloopx0][xloopx1].substring(0, GOLDX[xloopx0][xloopx1].length());
+								 getfile(); GOLDX[xloopx0][xloopx1] = "Image file name: " + filename;
+								 picturenumber1++;
+								 picturenumber2++;
+
+							 }//else
+
+						}//if findimage
+						//get potential image file stop.
+
+
+						cx1 = cx2.substring(ix2 + Integer.parseInt(f_xf_x[xloopx0][5].getText()), cx2.length());
+						newitems[xloopx0]++;
+						ix5 = ix5 + 1;
+
+						buttonl[2].setText("Cut: " + ix5 + " item(s)");
+
+					}//else
+
+				}//else
+
+			}//for: cuttype
+
+		}//for: cutnumber
 
 	}//cutx****
 
@@ -1120,65 +1155,90 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void printx(){
 
-	if(cb6.getText().equals("Output(CSV)")){printx_csv();}
-	if(cb6.getText().equals("Output(LSF)")){printx_lsf();}
+		if(cb6.getText().equals("Output(CSV)")){printx_csv();}
+
+		if(cb6.getText().equals("Output(LSF)")){printx_lsf();}
 
 	}//printx
 
 
-//print csv output.
+	//print csv output.
 	public void printx_csv(){ //for information CSV
-	t1.setText("Printing CSV");
 
-	//saveb = new StringBuffer("");
-	cx1 = new String("");
-	ix0 = 0;
+		t1.setText("Printing CSV");
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader("XMX" + savepagenumber + ".CSV"));
-	String str0;
-	while ((str0 = in.readLine()) != null) {xprinter[ix0] = str0; ix0++;}
-	in.close();} 
-	catch (IOException e) {t1.setText("No XMX file found.");}
+		//saveb = new StringBuffer("");
+		cx1 = new String("");
+		ix0 = 0;
+
+		try {
+
+			BufferedReader in = new BufferedReader(new FileReader("XMX" + savepagenumber + ".CSV"));
+			String str0;
+			while ((str0 = in.readLine()) != null) {xprinter[ix0] = str0; ix0++;}
+			in.close();
+
+		} catch (IOException e) {t1.setText("No XMX file found.");}
 
 
-	for(int xloopx0 = ix0; xloopx0 < ix0 + cutnumber; xloopx0++){//*****************************	
-	xprinter[xloopx0] = "";
-	}//for
+		for(int xloopx0 = ix0; xloopx0 < ix0 + cutnumber; xloopx0++){//*****************************	
 
-	//System.out.println("cutnumber" + cutnumber);
+			xprinter[xloopx0] = "";
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	if(pagenumberx == 0){t1.setText("pagenumber 0 break."); break;}
-	for(int xloopx1 = 0; xloopx1 < newitems[xloopx0]; xloopx1++){//*****************************
+		}//for
 
-	//System.out.println(newitems[xloopx0]);
+		//System.out.println("cutnumber" + cutnumber);
 
-	if(GOLDX[xloopx0][xloopx1].equals("null")){t1.setText("null item found in XMX printing list.");}
-	else if(GOLDX[xloopx0][xloopx1].length() == 0){t1.setText("0 length item found in XMX printing list.");}
-	else{	
+		for (int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++) {//*****************************	
 
-	xprinter[ix0] = xprinter[ix0] + GOLDX[xloopx0][xloopx1] + xsepxc;
-	//System.out.println("xp " + newitems[xloopx0] + " " + xprinter[ix0]);
+			if (pagenumberx == 0) {t1.setText("pagenumber 0 break."); break;}
 
-	}//else
+			for (int xloopx1 = 0; xloopx1 < newitems[xloopx0]; xloopx1++) {//*****************************
 
-	}//for
-	}//for
+				//System.out.println(newitems[xloopx0]);
 
-	ix0++;
-        buttonl[3].setText("Size: " + (xprinter[0].length() / 1024) + "kb");
+				if(GOLDX[xloopx0][xloopx1].equals("null")){t1.setText("null item found in XMX printing list.");}
+				else if(GOLDX[xloopx0][xloopx1].length() == 0){t1.setText("0 length item found in XMX printing list.");}
+				else{	
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("XMX" + savepagenumber + ".CSV"));
+					if (xloopx1 < newitems[xloopx0]) {
 
-	for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//****	
-	out.write(xprinter[xloopx0]);
-	out.newLine();
-	}//for********************************************
+						xprinter[ix0] = xprinter[ix0] + GOLDX[xloopx0][xloopx1] + xsepxc;
+						//System.out.println("xp " + newitems[xloopx0] + " " + xprinter[ix0]);
 
-        out.close();
-        }catch (IOException e) {}
+					}
+					else {
+
+						xprinter[ix0] = xprinter[ix0] + GOLDX[xloopx0][xloopx1];
+						//System.out.println("xp " + newitems[xloopx0] + " " + xprinter[ix0]);
+
+					}
+
+
+				}//else
+
+			}//for
+
+		}//for
+
+		ix0++;
+	    buttonl[3].setText("Size: " + (xprinter[0].length() / 1024) + "kb");
+
+		try {
+
+		    BufferedWriter out = new BufferedWriter(new FileWriter("XMX" + savepagenumber + ".CSV"));
+
+			for (int xloopx0 = 0; xloopx0 < ix0; xloopx0++) {//****
+
+				out.write(xprinter[xloopx0]);
+				out.newLine();
+
+			}//for********************************************
+
+	        out.close();
+
+        } catch (IOException e) {}
+
 	}//print_csv
 
 
@@ -1189,64 +1249,80 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 //print LSF output.
 	public void printx_lsf(){ //for information LSF
-	t1.setText("Printing LSF");
 
-	//saveb = new StringBuffer("");
-	cx1 = new String("");
-	ix0 = 0;
+		t1.setText("Printing LSF");
 
-	for(int xloopx0 = 0; xloopx0 < runs1; xloopx0++){//*****************************	
-	xprinter[xloopx0] = "";
-	}//for
+		//saveb = new StringBuffer("");
+		cx1 = new String("");
+		ix0 = 0;
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader("LSF" + savepagenumber + ".CSV"));
-	xlinex = blank;
-	while ((xlinex = in.readLine()) != null) {xprinter[ix0] = xlinex; ix0++;}
-	in.close();} 
-	catch (IOException e) {t1.setText("No LSF file found.");}
+		for(int xloopx0 = 0; xloopx0 < runs1; xloopx0++){//*****************************
 
+			xprinter[xloopx0] = "";
 
-	for(int xloopx0 = ix0; xloopx0 < ix0 + cutnumber; xloopx0++){//*******
-	xprinter[xloopx0] = "";
-	}//for*******************************************************
+		}//for
 
+		try {
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	if(pagenumberx == 0){t1.setText("pagenumber 0 break."); break;}
-	for(int xloopx1 = 0; xloopx1 < newitems[xloopx0]; xloopx1++){//*****************************
+			BufferedReader in = new BufferedReader(new FileReader("LSF" + savepagenumber + ".CSV"));
+			xlinex = blank;
+			while ((xlinex = in.readLine()) != null) {xprinter[ix0] = xlinex; ix0++;}
+			in.close();
+
+		} catch (IOException e) {t1.setText("No LSF file found.");}
 
 
-	if(GOLDX[xloopx0][xloopx1].equals("null")){t1.setText("null item found in LSF printing list.");}
-	else if(GOLDX[xloopx0][xloopx1].length() == 0){t1.setText("0 length item found in LSF printing list.");}
-	else{	
+		for(int xloopx0 = ix0; xloopx0 < ix0 + cutnumber; xloopx0++){//*******
+
+			xprinter[xloopx0] = "";
+
+		}//for*******************************************************
 
 
-	xprinter[ix0] = GOLDX[xloopx0][xloopx1];
-	xprinter[ix0] = xprinter[ix0] + xsepx0 + f_xf_x[1][1].getText();
-		if(f_xf_x[1][0].getText().equals("<*sk1*>")){xprinter[ix0] = xprinter[ix0] + loadedGOLD[1][savehold1];}
-	xprinter[ix0] = xprinter[ix0] + xsepx0 + f_xf_x[2][0].getText();
-		if(f_xf_x[2][0].getText().equals("<*sk1*>")){xprinter[ix0] = xprinter[ix0] + loadedGOLD[2][savehold1];}
-	xprinter[ix0] = xprinter[ix0] + xsepx0;
-	ix0++;
+		for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
 
-	}//else
+			if(pagenumberx == 0){t1.setText("pagenumber 0 break."); break;}
 
-	}//for
-	}//for
+			for(int xloopx1 = 0; xloopx1 < newitems[xloopx0]; xloopx1++){//*****************************
 
-        buttonl[3].setText("Size: " + (xprinter[0].length() / 1024) + "kb");
+				if(GOLDX[xloopx0][xloopx1].equals("null")){t1.setText("null item found in LSF printing list.");}
+				else if(GOLDX[xloopx0][xloopx1].length() == 0){t1.setText("0 length item found in LSF printing list.");}
+				else{	
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("LSF" + savepagenumber + ".CSV"));
 
-	for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//****	
-	out.write(xprinter[xloopx0]);
-	out.newLine();
-	}//for********************************************
+					xprinter[ix0] = GOLDX[xloopx0][xloopx1];
+					xprinter[ix0] = xprinter[ix0] + xsepx0 + f_xf_x[1][1].getText();
 
-        out.close();
-        }catch (IOException e){}
+					if(f_xf_x[1][0].getText().equals("<*sk1*>")){xprinter[ix0] = xprinter[ix0] + loadedGOLD[1][savehold1];}
+					xprinter[ix0] = xprinter[ix0] + xsepx0 + f_xf_x[2][0].getText();
+
+					if(f_xf_x[2][0].getText().equals("<*sk1*>")){xprinter[ix0] = xprinter[ix0] + loadedGOLD[2][savehold1];}
+					xprinter[ix0] = xprinter[ix0] + xsepx0;
+					ix0++;
+
+				}//else
+
+			}//for
+
+		}//for
+
+	    buttonl[3].setText("Size: " + (xprinter[0].length() / 1024) + "kb");
+
+		try {
+
+		    BufferedWriter out = new BufferedWriter(new FileWriter("LSF" + savepagenumber + ".CSV"));
+
+			for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//****
+
+				out.write(xprinter[xloopx0]);
+				out.newLine();
+
+			}//for********************************************
+
+	        out.close();
+
+        } catch (IOException e){}
+
 	}//print_txt
 
 
@@ -1273,87 +1349,116 @@ System.out.println("vs " + nm.vulture_settings.length());
 //save settings SSF.ini
 	public void savex(){ //for programe
 
-	StringBuffer sb = new StringBuffer("");
+		StringBuffer sb = new StringBuffer("");
 
-	try {
+		try {
 
 
-//save the key and the hard drive size.
-	sb.append("xxx" + "***" + "111111");
-        sb.append(xsepx0);
+		//save the key and the hard drive size.
+			sb.append("xxx" + "***" + "111111");
+		    sb.append(xsepx0);
 
-//save the go html field 
-	if(!outputcsv){switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}	
-	else{switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}
-	sb.append(switchHTML[0] + xsepx0);
-	sb.append(switchHTML[1] + xsepx0);
+		//save the go html field 
+			if(!outputcsv){switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}	
+			else{switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}
+			sb.append(switchHTML[0] + xsepx0);
+			sb.append(switchHTML[1] + xsepx0);
 
-//save the make LL field.
-	for(int xloopx0 = 0; xloopx0 < 4; xloopx0++){//********
-        sb.append(URL[xloopx0].getText());
-        sb.append(xsepx0);
-	}//for
+		//save the make LL field.
+			for(int xloopx0 = 0; xloopx0 < 4; xloopx0++){//********
 
-//save the precut field. 
-	if(outputcsv){switchPRECUT[0][1] = searchtop[0].getText(); switchPRECUT[1][1] = searchtop[1].getText();}
-	else{switchPRECUT[0][0] = searchtop[0].getText(); switchPRECUT[1][0] = searchtop[1].getText();}
-		
-	sb.append(switchPRECUT[0][0] + xsepx0);
-	sb.append(switchPRECUT[1][0] + xsepx0);
-	sb.append(switchPRECUT[0][1] + xsepx0);
-	sb.append(switchPRECUT[1][1] + xsepx0);
+		        sb.append(URL[xloopx0].getText());
+		        sb.append(xsepx0);
 
-//save the scraping fields.
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
-	if(outputcsv){switchSCAPE[xloopx0][xloopx1][1] = f_xf_x[xloopx0][xloopx1].getText();}
-	else{switchSCAPE[xloopx0][xloopx1][0] = f_xf_x[xloopx0][xloopx1].getText();}
-        sb.append(switchSCAPE[xloopx0][xloopx1][0] + xsepx0);
-	}//for
-	}//for
+			}//for
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
-	if(outputcsv){switchSCAPE[xloopx0][xloopx1][1] = f_xf_x[xloopx0][xloopx1].getText();}
-	else{switchSCAPE[xloopx0][xloopx1][0] = f_xf_x[xloopx0][xloopx1].getText();}
-        sb.append(switchSCAPE[xloopx0][xloopx1][1] + xsepx0);
-	}//for
-	}//for
+		//save the precut field. 
+			if(outputcsv){switchPRECUT[0][1] = searchtop[0].getText(); switchPRECUT[1][1] = searchtop[1].getText();}
+			else{switchPRECUT[0][0] = searchtop[0].getText(); switchPRECUT[1][0] = searchtop[1].getText();}
+				
+			sb.append(switchPRECUT[0][0] + xsepx0);
+			sb.append(switchPRECUT[1][0] + xsepx0);
+			sb.append(switchPRECUT[0][1] + xsepx0);
+			sb.append(switchPRECUT[1][1] + xsepx0);
 
-//number of cuts per page.
-	sb.append(Integer.toString(cuttype));
-        sb.append(xsepx0);
+		//save the scraping fields.
+			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
 
-//time out
-	sb.append(Integer.toString(sleepx));
-        sb.append(xsepx0);
+				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
 
-	sb.append(Integer.toString(scraperstage));
-        sb.append(xsepx0);
+					if(outputcsv){switchSCAPE[xloopx0][xloopx1][1] = f_xf_x[xloopx0][xloopx1].getText();}
+					else{switchSCAPE[xloopx0][xloopx1][0] = f_xf_x[xloopx0][xloopx1].getText();}
+				    sb.append(switchSCAPE[xloopx0][xloopx1][0] + xsepx0);
 
-//to lower case yes or no.
-	if(to_lower_caseb){
-	sb.append(Integer.toString(1));
-        sb.append(xsepx0);
-	}else{
-	sb.append(Integer.toString(0));
-        sb.append(xsepx0);
-	}//else
+				}//for
 
-//output lsf csv
-	if(outputcsv){
-	sb.append(Integer.toString(1));
-        sb.append(xsepx0);
-	}else{
-	sb.append(Integer.toString(0));
-        sb.append(xsepx0);
-	}//else
+			}//for
 
-	nm.vulture_settings = sb.toString();
+			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
 
-	System.out.println(nm.vulture_settings);
+				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
 
-        }catch (Exception e) {t1.setText("Save settings file faild. File: SSF.ini");}
+					if(outputcsv){switchSCAPE[xloopx0][xloopx1][1] = f_xf_x[xloopx0][xloopx1].getText();}
+					else{switchSCAPE[xloopx0][xloopx1][0] = f_xf_x[xloopx0][xloopx1].getText();}
+				    sb.append(switchSCAPE[xloopx0][xloopx1][1] + xsepx0);
+
+				}//for
+
+			}//for
+
+		//number of cuts per page.
+			sb.append(Integer.toString(cuttype));
+		    sb.append(xsepx0);
+
+		//time out
+			sb.append(Integer.toString(sleepx));
+		    sb.append(xsepx0);
+
+			sb.append(Integer.toString(scraperstage));
+		    sb.append(xsepx0);
+
+		//to lower case yes or no.
+			if (to_lower_caseb) {
+
+				sb.append(Integer.toString(1));
+		        sb.append(xsepx0);
+
+			}else{
+
+				sb.append(Integer.toString(0));
+		        sb.append(xsepx0);
+
+			}//else
+
+		//output lsf csv
+			if (outputcsv) {
+
+				sb.append(Integer.toString(1));
+		        sb.append(xsepx0);
+
+			} else {
+
+				sb.append(Integer.toString(0));
+		        sb.append(xsepx0);
+
+			}//else
+
+
+
+			try {
+
+		        BufferedWriter out = new BufferedWriter(new FileWriter("SSF.ini"));
+
+				out.write(sb.toString());
+
+		        out.close();
+
+	        } catch (IOException e) {}
+
+
+	     
+        } catch (Exception e) {t1.setText("Save settings file faild. File: SSF.ini");}
+
 	}//printx
 
 
@@ -1374,137 +1479,153 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 
 //load settings SSF.ini
-	public void loadx(){ 
+	public void loadx() { 
 
-	//try {
-	//BufferedReader in = new BufferedReader(new FileReader("SSF.ini"));
-	//xlinex = blank;
-	//while ((xlinex = in.readLine()) != null) {cx1 = xlinex;}
-	//in.close();} 
-	//catch (IOException e){t1.setText("No SSF file found.");}
+		try {
 
+			BufferedReader in = new BufferedReader(new FileReader("SSF.ini"));
+			xlinex = blank;
+			while ((xlinex = in.readLine()) != null) {cx1 = xlinex;}
+			in.close();
 
-	cx1 = nm.vulture_settings;
-	System.out.println("CX1.length " + cx1.length());
+		} catch (IOException e){t1.setText("No SSF file found.");}
 
 
-	try {
-//the program key.
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){System.out.println("<><><>"); savex();}
-	cx2 = cx1.substring(0, ix1);
-	cx2 = cx2.substring(0, 10) + cx2.substring(10, cx2.length());
-	ix2 = cx2.indexOf("***");
-	System.out.println("xx x " + cx2);
-	if(ix2 == -1){System.out.println("falure, program load falure. 00116");}
-	else{carbonkeyx = cx2.substring(0, ix2); size2 = Long.parseLong(cx2.substring(ix2 + 3, cx2.length()));}
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+		//cx1 = nm.vulture_settings;
+		//System.out.println("CX1.length " + cx1.length());
 
-//the top html field.
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	switchHTML[0] = cx2;
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
 
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	switchHTML[1] = cx2;
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+		try {
 
-//make LL URL fields at the top. Before JButton (make link list)
-	for(int xloopx0 = 0; xloopx0 < 4; xloopx0++){//*****************************	
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){break;}
-	cx2 = cx1.substring(0, ix1);
-	URL[xloopx0].setText(cx2);
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	}//for
+		//the program key.
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){System.out.println("<><><>"); savex();}
+			cx2 = cx1.substring(0, ix1);
+			cx2 = cx2.substring(0, 10) + cx2.substring(10, cx2.length());
+			ix2 = cx2.indexOf("***");
+			System.out.println("xx x " + cx2);
+			if(ix2 == -1){System.out.println("falure, program load falure. 00116");}
+			else{carbonkeyx = cx2.substring(0, ix2); size2 = Long.parseLong(cx2.substring(ix2 + 3, cx2.length()));}
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
 
-//the precut fields.
-	for(int xloopx0 = 0; xloopx0 < 2; xloopx0++){//*****************************	
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){break;}
-	cx2 = cx1.substring(0, ix1);
-	switchPRECUT[xloopx0][0] = cx2;
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	}//for
+		//the top html field.
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			switchHTML[0] = cx2;
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
 
-	for(int xloopx0 = 0; xloopx0 < 2; xloopx0++){//*****************************	
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){break;}
-	cx2 = cx1.substring(0, ix1);
-	switchPRECUT[xloopx0][1] = cx2;
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	}//for
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			switchHTML[1] = cx2;
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
 
-//***all the data in the scraping fields.**
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){break;}
-	cx2 = cx1.substring(0, ix1);
-	switchSCAPE[xloopx0][xloopx1][0] = cx2;
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	}//for
-	}//for
+		//make LL URL fields at the top. Before JButton (make link list)
+			for(int xloopx0 = 0; xloopx0 < 4; xloopx0++){//*****************************	
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){break;}
-	cx2 = cx1.substring(0, ix1);
-	switchSCAPE[xloopx0][xloopx1][1] = cx2;
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	}//for
-	}//for
+				ix1 = cx1.indexOf(xsepx0);
+				if(ix1 == -1){break;}
+				cx2 = cx1.substring(0, ix1);
+				URL[xloopx0].setText(cx2);
+				cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
 
-//cuttype
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	cuttype = Integer.parseInt(cx2);
-	cb0.setText("CutType(" + cuttype + ")");
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	if(cuttype == runs1){cb0.setText("CutType(all)");}
+			}//for
 
-//sleep
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	sleepx = Integer.parseInt(cx2);
-	cb5.setText("Sleep(" + sleepx + "s)");
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+		//the precut fields.
+			for(int xloopx0 = 0; xloopx0 < 2; xloopx0++){//*****************************	
 
-//show INFO
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	//scraperstage = Integer.parseInt(cx2);
-	//cb3.setText("Stage(" + scraperstage + ")");
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+				ix1 = cx1.indexOf(xsepx0);
+				if(ix1 == -1){break;}
+				cx2 = cx1.substring(0, ix1);
+				switchPRECUT[xloopx0][0] = cx2;
+				cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
 
-//to lower case
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	ix2 = Integer.parseInt(cx2);
-	if(ix2 == 1){to_lower_caseb = true; cb2.setText("toLowerCase(on)");}
-	else{to_lower_caseb = false; cb2.setText("toLowerCase(off)");}
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+			}//for
 
-//select output
-	ix1 = cx1.indexOf(xsepx0);
-	if(ix1 == -1){}
-	cx2 = cx1.substring(0, ix1);
-	ix2 = Integer.parseInt(cx2);
-	if(ix2 == 1){outputcsv = true; cb6.setText("Output(CSV)");}
-	else{outputcsv = false; cb6.setText("Output(LSF)");}
-	cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
-	setoutputx();
+			for(int xloopx0 = 0; xloopx0 < 2; xloopx0++){//*****************************
 
-	}catch (IndexOutOfBoundsException e){t1.setText("Load settings file faild. File: SSF.ini");}
+				ix1 = cx1.indexOf(xsepx0);
+				if(ix1 == -1){break;}
+				cx2 = cx1.substring(0, ix1);
+				switchPRECUT[xloopx0][1] = cx2;
+				cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+
+			}//for
+
+			//***all the data in the scraping fields.**
+			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
+
+				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
+
+					ix1 = cx1.indexOf(xsepx0);
+					if(ix1 == -1){break;}
+					cx2 = cx1.substring(0, ix1);
+					switchSCAPE[xloopx0][xloopx1][0] = cx2;
+					cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+
+				}//for
+
+			}//for
+
+			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
+				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
+					ix1 = cx1.indexOf(xsepx0);
+					if(ix1 == -1){break;}
+					cx2 = cx1.substring(0, ix1);
+					switchSCAPE[xloopx0][xloopx1][1] = cx2;
+					cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+
+				}//for
+
+			}//for
+
+			//cuttype
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			cuttype = Integer.parseInt(cx2);
+			cb0.setText("CutType(" + cuttype + ")");
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+			if(cuttype == runs1){cb0.setText("CutType(all)");}
+
+			//sleep
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			sleepx = Integer.parseInt(cx2);
+			cb5.setText("Sleep(" + sleepx + "s)");
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+
+			//show INFO
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			//scraperstage = Integer.parseInt(cx2);
+			//cb3.setText("Stage(" + scraperstage + ")");
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+
+			//to lower case
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			ix2 = Integer.parseInt(cx2);
+			if(ix2 == 1){to_lower_caseb = true; cb2.setText("toLowerCase(on)");}
+			else{to_lower_caseb = false; cb2.setText("toLowerCase(off)");}
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+
+			//select output
+			ix1 = cx1.indexOf(xsepx0);
+			if(ix1 == -1){}
+			cx2 = cx1.substring(0, ix1);
+			ix2 = Integer.parseInt(cx2);
+			if(ix2 == 1){outputcsv = true; cb6.setText("Output(CSV)");}
+			else{outputcsv = false; cb6.setText("Output(LSF)");}
+			cx1 = cx1.substring(ix1 + xsepx0.length(), cx1.length());
+			setoutputx();
+
+		} catch (Exception e){t1.setText("Load settings file faild. File: SSF.ini");}
+
 	}//loadx
 
 
@@ -1520,23 +1641,29 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 //resave the linklist "LSF" after links have been used. 
 	public void savelinklist(){ 
-	t1.setText("save link list");
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
+		t1.setText("save link list");
 
-	for(int xloopx1 = savehold1 + 1; xloopx1 < linknumber1; xloopx1++){//********
-	for(int xloopx2 = 0; xloopx2 < 3; xloopx2++){//********
+		try {
 
-        out.write(loadedGOLD[xloopx2][xloopx1]);
-	out.write(xsepx0);
+	        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
 
-	}//for
-	out.newLine();
-	}//for
+			for(int xloopx1 = savehold1 + 1; xloopx1 < linknumber1; xloopx1++){//********
 
-        out.close();
-        }catch (IOException e) {}
+				for(int xloopx2 = 0; xloopx2 < 3; xloopx2++){//********
+
+			        out.write(loadedGOLD[xloopx2][xloopx1]);
+					out.write(xsepx0);
+
+				}//for
+
+				out.newLine();
+
+			}//for
+
+	        out.close();
+
+        } catch (IOException e) {}
 
 	}//savelinklist()
 
@@ -1549,85 +1676,111 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 
 	public void loadll(){ 
-	cx1 = blank;
 
-	file_f1 = new File("LSF" + scrapsread + ".CSV");
-	if(file_f1.exists()){}
-	else{t1.setText("No link list.");}//System.exit(0);
-	xlinex = blank;
+		cx1 = blank;
 
-	linknumber1 = 0;
-	try {
-	BufferedReader in = new BufferedReader(new FileReader("LSF.CSV"));
-	while ((xlinex = in.readLine()) != null){
+		file_f1 = new File("LSF" + scrapsread + ".CSV");
+		if(file_f1.exists()){}
+		else{t1.setText("No link list.");}//System.exit(0);
+		xlinex = blank;
 
-	if(linknumber1 < runs1){
-	loadedGOLD[0][linknumber1] = xlinex; linknumber1++; buttonl[5].setText("Loading: " + linknumber1);
-	}//if
-	linknumber2++;
+		linknumber1 = 0;
 
-	}//while
-	in.close();} 
-	catch (IOException e) {t1.setText("No LSF file found.");}
+		try {
 
+			BufferedReader in = new BufferedReader(new FileReader("LSF.CSV"));
 
+			while ((xlinex = in.readLine()) != null) {
 
-	for(int xloopx0 = 0; xloopx0 < linknumber1; xloopx0++){//*******************************
-	loadedGOLD[1][xloopx0] = "null";
-	loadedGOLD[2][xloopx0] = "null";
+				if (linknumber1 < runs1) {
 
-	ix1 = loadedGOLD[0][xloopx0].indexOf(xsepx0);
-	if(ix1 > -1){
-	loadedGOLD[1][xloopx0] = loadedGOLD[0][xloopx0].substring(ix1 + xsepx0.length(), loadedGOLD[0][xloopx0].length());
-	loadedGOLD[0][xloopx0] = loadedGOLD[0][xloopx0].substring(0, ix1);
-	linklist[xloopx0] = loadedGOLD[0][xloopx0];
-	}//if
-	else{}
+					loadedGOLD[0][linknumber1] = xlinex; linknumber1++; buttonl[5].setText("Loading: " + linknumber1);
 
-	ix1 = loadedGOLD[1][xloopx0].indexOf(xsepx0);
-	if(ix1 > -1){
-	loadedGOLD[2][xloopx0] = loadedGOLD[1][xloopx0].substring(ix1 + xsepx0.length(), loadedGOLD[1][xloopx0].length());
-	loadedGOLD[1][xloopx0] = loadedGOLD[1][xloopx0].substring(0, ix1);
-	}//if
-	else{}
+				}//if
 
-	ix1 = loadedGOLD[2][xloopx0].indexOf(xsepx0);
-	if(ix1 > -1){
-	loadedGOLD[2][xloopx0] = loadedGOLD[2][xloopx0].substring(0, ix1);
-	}//if
-	else{}
+				linknumber2++;
 
-	}//for*****************************************************************
+			}//while
+
+			in.close();
+
+		} catch (IOException e) {t1.setText("No LSF file found.");}
 
 
-	buttonl[5].setText("Links: " + linknumber1);
 
-	//show loading falure text. Moved to "out put x"
+		for (int xloopx0 = 0; xloopx0 < linknumber1; xloopx0++) {//*******************************
 
-	findspn();
+			loadedGOLD[1][xloopx0] = "null";
+			loadedGOLD[2][xloopx0] = "null";
+
+			ix1 = loadedGOLD[0][xloopx0].indexOf(xsepx0);
+
+			if (ix1 > -1) {
+
+				loadedGOLD[1][xloopx0] = loadedGOLD[0][xloopx0].substring(ix1 + xsepx0.length(), loadedGOLD[0][xloopx0].length());
+				loadedGOLD[0][xloopx0] = loadedGOLD[0][xloopx0].substring(0, ix1);
+				linklist[xloopx0] = loadedGOLD[0][xloopx0];
+
+			}//if
+			else{}
+
+			ix1 = loadedGOLD[1][xloopx0].indexOf(xsepx0);
+
+			if(ix1 > -1){
+
+				loadedGOLD[2][xloopx0] = loadedGOLD[1][xloopx0].substring(ix1 + xsepx0.length(), loadedGOLD[1][xloopx0].length());
+				loadedGOLD[1][xloopx0] = loadedGOLD[1][xloopx0].substring(0, ix1);
+
+			}//if
+			else{}
+
+			ix1 = loadedGOLD[2][xloopx0].indexOf(xsepx0);
+
+			if(ix1 > -1){
+
+				loadedGOLD[2][xloopx0] = loadedGOLD[2][xloopx0].substring(0, ix1);
+
+			}//if
+			else{}
+
+		}//for*****************************************************************
+
+
+		buttonl[5].setText("Links: " + linknumber1);
+
+		//show loading falure text. Moved to "out put x"
+
+		findspn();
+
 	}//loadll
 
 
 
-	public void findspn(){//save page number
-	savepagenumber = 0;
-	cx1 = blank;
+	public void findspn() {//save page number
 
-	try {
-	BufferedReader in;
-	if(outputcsv){in = new BufferedReader(new FileReader("XMX" + savepagenumber + ".CSV"));}
-	else{in = new BufferedReader(new FileReader("LSF.CSV"));}
-	xlinex = blank;
-	while ((xlinex = in.readLine()) != null){cx1 = xlinex;}
-	in.close();
-	}catch(IOException e){t1.setText("No XMX file found. <>>>");}
+		savepagenumber = 0;
+		cx1 = blank;
 
-	for(int xloopx1 = 0; xloopx1 < runs1; xloopx1++){//****************
-	if(outputcsv){file_f1 = new File("XMX" + savepagenumber + ".CSV");}
-	else{file_f1 = new File("LSF" + savepagenumber + ".CSV");}
-	if(file_f1.exists() && cx1.length() > 0){savepagenumber++;}
-	else{break;}
-	}//for******************************************************
+		try {
+
+			BufferedReader in;
+			if(outputcsv){in = new BufferedReader(new FileReader("XMX" + savepagenumber + ".CSV"));}
+			else{in = new BufferedReader(new FileReader("LSF.CSV"));}
+			xlinex = blank;
+			while ((xlinex = in.readLine()) != null){cx1 = xlinex;}
+			in.close();
+
+		}catch(IOException e){t1.setText("No XMX file found. <>>>");}
+
+		for(int xloopx1 = 0; xloopx1 < runs1; xloopx1++){//****************
+
+			if(outputcsv){file_f1 = new File("XMX" + savepagenumber + ".CSV");}
+			else{file_f1 = new File("LSF" + savepagenumber + ".CSV");}
+
+			if(file_f1.exists() && cx1.length() > 0){savepagenumber++;}
+			else{break;}
+
+		}//for******************************************************
 
 	}//findspn
 
@@ -1652,59 +1805,66 @@ System.out.println("vs " + nm.vulture_settings.length());
 	class RemindTask extends TimerTask{
 	public void run(){
 
-	Runtime rxrunti = Runtime.getRuntime();
+		Runtime rxrunti = Runtime.getRuntime();
 
-	t1.setText("start.");
-  	pagenumberx = 0;
-	savell = 1;
+		t1.setText("start.");
+	  	pagenumberx = 0;
+		savell = 1;
 
-	//System.out.println(rxrunti.freeMemory());
-	loadll();
-	rxrunti.gc();
-	//System.out.println(rxrunti.freeMemory());
+		//System.out.println(rxrunti.freeMemory());
+		loadll();
+		rxrunti.gc();
+		//System.out.println(rxrunti.freeMemory());
 
-	for(int xloopx0 = 0; xloopx0 < linknumber1; xloopx0++){//********
-	t1.setText("Start...");
-	if(startstart == 1){//****
+		for(int xloopx0 = 0; xloopx0 < linknumber1; xloopx0++){//********
 
-	savehold1 = xloopx0;
-	if(passes == 50){savepagenumber++; passes = 0; savelinklist();}
+			t1.setText("Start...");
 
-	setTitle("Vulture: " + (linknumber1 - xloopx0));
-	HTMLGO = linklist[xloopx0];
-	lpage1.setText(HTMLGO);
-	resetgold();
-	buttonl[5].setText("Links: " + (linknumber1 - xloopx0));
-	saveloop1 = xloopx0;
-	t1.setText("Ping...");
-	ping();
-	t1.setText("Cut...");
-	precut();
-	cutx();
-	pagenumberx++;
-	t1.setText("Save...");
-	printx();
-	resetnumber();
-	passes++;
-	t1.setText("Sleep...");
-	tabxx();
+			if(startstart == 1){//****
 
-	}//if****************
-	else{t1.setText("Exit."); break;}
+				savehold1 = xloopx0;
+				if(passes == 50){savepagenumber++; passes = 0; savelinklist();}
 
-	t1.setText("Done...");
-	}//for***************************************************
+				setTitle("Vulture: " + (linknumber1 - xloopx0));
+				HTMLGO = linklist[xloopx0];
+				lpage1.setText(HTMLGO);
+				resetgold();
+				buttonl[5].setText("Links: " + (linknumber1 - xloopx0));
+				saveloop1 = xloopx0;
 
-  	t1.setText("finished.");
-	savelinklist();
-	b5.setText("Scrape LSF");
-	buttonl[5].setText("Load next LSF");
-	setTitle("Vulture: Load next LSF");
-	o_n = true;
-	startstart = 2;
+				t1.setText("Ping...");
+				ping();
 
-        }//run
-        }//remindtask
+				t1.setText("Cut...");
+				precut();
+				cutx();
+				pagenumberx++;
+
+				t1.setText("Save...");
+				printx();
+				resetnumber();
+				passes++;
+
+				t1.setText("Sleep...");
+				tabxx();
+
+			}//if****************
+			else{t1.setText("Exit."); break;}
+
+			t1.setText("Done...");
+
+		}//for***************************************************
+
+	  	t1.setText("finished.");
+		savelinklist();
+		b5.setText("Scrape LSF");
+		buttonl[5].setText("Load next LSF");
+		setTitle("Vulture: Load next LSF");
+		o_n = true;
+		startstart = 2;
+
+    }//run
+    }//remindtask
 
 
 
@@ -1717,24 +1877,26 @@ System.out.println("vs " + nm.vulture_settings.length());
 	class JpanelTask extends TimerTask{
 	public void run(){
 
-	try{
-	Thread.sleep(100);
-	}catch (InterruptedException e){}
+		try{
 
-	cp_container.remove(jpk);
-	cp_container.remove(spacelabel1);
-	cp_container.add(jp0);
-	cp_container.add(jp1);
-	cp_container.add(jp2);
-	cp_container.add(jp3);
-	cp_container.add(pageinfo);
+			Thread.sleep(100);
 
-	setVisible(false);
-	setVisible(true);
-	programstart = false;
+		}catch (InterruptedException e){}
 
-        }//run
-        }//remindtask
+		cp_container.remove(jpk);
+		cp_container.remove(spacelabel1);
+		cp_container.add(jp0);
+		cp_container.add(jp1);
+		cp_container.add(jp2);
+		cp_container.add(jp3);
+		cp_container.add(pageinfo);
+
+		setVisible(false);
+		setVisible(true);
+		programstart = false;
+
+    }//run
+    }//remindtask
 
 
 
@@ -1757,21 +1919,19 @@ System.out.println("vs " + nm.vulture_settings.length());
 //used one time when the program starts for the first time. 
 	public void inpsutkgcd(){
 
+		carbonkey = enterkey_text.getText();
+		size2 = size1;
 
-	carbonkey = enterkey_text.getText();
-	size2 = size1;
-
-	workx = true; 
-	carbonkeyx = carbonkey;
-	savex(); 
-	enterkey_text.setEditable(false); 
-	enterkey_label.setText(infox5); 
-	ix0 = sleepx; 
-	sleepx = 2; 
-	tabxx(); 
-	sleepx = ix0; 
-	jpanelxx();
-
+		workx = true; 
+		carbonkeyx = carbonkey;
+		savex(); 
+		enterkey_text.setEditable(false); 
+		enterkey_label.setText(infox5); 
+		ix0 = sleepx; 
+		sleepx = 2; 
+		tabxx(); 
+		sleepx = ix0; 
+		jpanelxx();
 
 	}//input key gen
 
@@ -1798,25 +1958,31 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 //handel button clicks from scrape LSF 
 	public void txx(){
-	if(startstart == 1){
 
-	startstart = 2;
-	b5.setText("Wait...");
+		if(startstart == 1){
 
-	}//if
-	else{
+			startstart = 2;
+			b5.setText("Wait...");
 
-	if(o_n){
-	savell = 0;
-	startstart = 1;
-    	toolkit = Toolkit.getDefaultToolkit();
-    	xtimerx = new Timer();
-    	xtimerx.schedule(new RemindTask(), 0);
-	b5.setText("Pause");
-	o_n = false;
-	}//on
+		}//if
+		else{
 
-	}//else
+			if(o_n){
+
+				savell = 0;
+				startstart = 1;
+
+		    	//toolkit = Toolkit.getDefaultToolkit();
+		    	xtimerx = new Timer();
+		    	xtimerx.schedule(new RemindTask(), 0);
+
+				b5.setText("Pause");
+				o_n = false;
+
+			}//on
+
+		}//else
+
 	}//xtimerx
 
 
@@ -1846,35 +2012,41 @@ System.out.println("vs " + nm.vulture_settings.length());
 //add 1 new item to the LSF list.
 	public void add_to_lsf(){
 
-	cx1 = blank;
-	ix0 = 0;
+		cx1 = blank;
+		ix0 = 0;
 
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader("LSF.CSV"));
-	xlinex = blank;
-	while ((xlinex = in.readLine()) != null){loadedGOLD[0][ix0] = xlinex; ix0++;}
-	in.close();
-        }catch (IOException e){}
+		try {
 
-	loadedGOLD[0][ix0] = MHTF.getText() + xsepx0 + "*" + xsepx0 + "*";
-	ix0++;
+			BufferedReader in = new BufferedReader(new FileReader("LSF.CSV"));
+			xlinex = blank;
+			while ((xlinex = in.readLine()) != null){loadedGOLD[0][ix0] = xlinex; ix0++;}
+			in.close();
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
- 
-	for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//******
-	out.write(loadedGOLD[0][xloopx0]);
-	out.newLine();
-    	}//******************************************
+		}catch (IOException e){}
 
-        out.close();
-        }catch (IOException e){}
+		loadedGOLD[0][ix0] = MHTF.getText() + xsepx0 + "*" + xsepx0 + "*";
+		ix0++;
 
-	t1.setText("Add this URL to the Link List. LSF");
-	lpage1.setText("LSF + 1");
+		try {
 
-	loadll();
+	        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
+	 
+			for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//******
+
+				out.write(loadedGOLD[0][xloopx0]);
+				out.newLine();
+
+		    }//******************************************
+
+	        out.close();
+
+	     }catch (IOException e){}
+
+		t1.setText("Add this URL to the Link List. LSF");
+		lpage1.setText("LSF + 1");
+
+		loadll();
 
 	}//add to lsf
 
@@ -1887,39 +2059,43 @@ System.out.println("vs " + nm.vulture_settings.length());
 //creats a LSF file from info in "create link list"
 	public void makell(){
 
-	t1.setText("Creates a LSF file from given data.");
-	ix0 = 0;
+		t1.setText("Creates a LSF file from given data.");
+		ix0 = 0;
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader("LSF.CSV"));
-	xlinex = blank;
-	while ((xlinex = in.readLine()) != null){compresser[ix0] = xlinex; lpage2.setText("Loading: " + ix0); ix0++;}
-	in.close();
-	}catch(IOException e){t1.setText("Load old LSF file failed.");}
+		try {
 
-	ix1 = Integer.parseInt(URL[3].getText());
-	ix2 = Integer.parseInt(URL[1].getText());
+			BufferedReader in = new BufferedReader(new FileReader("LSF.CSV"));
+			xlinex = blank;
+			while ((xlinex = in.readLine()) != null){compresser[ix0] = xlinex; lpage2.setText("Loading: " + ix0); ix0++;}
+			in.close();
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
+		}catch(IOException e){t1.setText("Load old LSF file failed.");}
 
-	for(int xloopx1 = 0; xloopx1 < ix0; xloopx1++){//*****************************
-	out.write(compresser[xloopx1]);
-	out.newLine();
-	}//for
+		ix1 = Integer.parseInt(URL[3].getText());
+		ix2 = Integer.parseInt(URL[1].getText());
 
-	for(int xloopx1 = 0; xloopx1 < ix1; xloopx1++){//*****************************
-	out.write(URL[0].getText() + (xloopx1 * ix2) + URL[2].getText() + xsepx0 + "*" + xsepx0 + "*" + xsepx0);
-	out.newLine();
-	lpage2.setText("LSF + " + (xloopx1 + 1));
-	}//for
+		try {
 
-        out.close();
-        }catch (IOException e) {}
+	        BufferedWriter out = new BufferedWriter(new FileWriter("LSF.CSV"));
 
-	loadll();
+			for(int xloopx1 = 0; xloopx1 < ix0; xloopx1++){//*****************************
+				out.write(compresser[xloopx1]);
+				out.newLine();
+			}//for
 
-	showinfox3();
+			for(int xloopx1 = 0; xloopx1 < ix1; xloopx1++){//*****************************
+				out.write(URL[0].getText() + (xloopx1 * ix2) + URL[2].getText() + xsepx0 + "*" + xsepx0 + "*" + xsepx0);
+				out.newLine();
+				lpage2.setText("LSF + " + (xloopx1 + 1));
+			}//for
+
+	    	out.close();
+
+	    }catch (IOException e) {}
+
+		loadll();
+
+		showinfox3();
 
 	}//make ll
 
@@ -1936,53 +2112,64 @@ System.out.println("vs " + nm.vulture_settings.length());
 //combine all the CSV or LSF files into 1.
 	public void combinex(){
 
-	t1.setText("Combine all the .CSV files into one.");
-	ix0 = 0;
+		t1.setText("Combine all the .CSV files into one.");
+		ix0 = 0;
 
-	if(outputcsv){
-	try {
-	BufferedReader in = new BufferedReader(new FileReader("XMX.CSV"));
-	xlinex = blank;
-	while ((xlinex = in.readLine()) != null){compresser[ix0] = xlinex; ix0++;}
-	in.close();
-	}catch (IOException e){t1.setText("Load old XMX file failed.");}
-	}//if*******
+		if(outputcsv){
 
+			try {
 
-	for(int xloopx0 = 0; xloopx0 < 1000; xloopx0++){//********
+				BufferedReader in = new BufferedReader(new FileReader("XMX.CSV"));
+				xlinex = blank;
+				while ((xlinex = in.readLine()) != null){compresser[ix0] = xlinex; ix0++;}
+				in.close();
 
-	try {
-	BufferedReader in;
-	if(outputcsv){in = new BufferedReader(new FileReader("XMX" + xloopx0 + ".CSV"));}
-	else{in = new BufferedReader(new FileReader("LSF" + xloopx0 + ".CSV"));}
-	xlinex = blank;
-	while ((xlinex = in.readLine()) != null){compresser[ix0] = xlinex; buttonl[4].setText("Loading: " + ix0); ix0++;}
-	in.close();
+			}catch (IOException e){t1.setText("Load old XMX file failed.");}
 
-	if(outputcsv){file_f2 = new File("XMX" + xloopx0 + ".CSV");}
-	else{file_f2 = new File("LSF" + xloopx0 + ".CSV");}
-
-	file_f2.delete();
-	}catch (IOException e){t1.setText("NO more files to compress."); break;}
-
-	}//for
-
-	//System.out.println(ix0);
+		}//if*******
 
 
-	try {
-	BufferedWriter out;
-   	if(outputcsv){out = new BufferedWriter(new FileWriter("XMX.CSV"));}
-	else{out = new BufferedWriter(new FileWriter("LSF.CSV"));}
+		for(int xloopx0 = 0; xloopx0 < 1000; xloopx0++){//********
 
-	for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//********
-        buttonl[4].setText("Printing: " + (xloopx0 + 1));
-        out.write(compresser[xloopx0]);
-        out.newLine();
-	}//for
+			try {
 
-        out.close();
-        }catch (IOException e){}
+				BufferedReader in;
+				if(outputcsv){in = new BufferedReader(new FileReader("XMX" + xloopx0 + ".CSV"));}
+				else{in = new BufferedReader(new FileReader("LSF" + xloopx0 + ".CSV"));}
+				xlinex = blank;
+				while ((xlinex = in.readLine()) != null){compresser[ix0] = xlinex; buttonl[4].setText("Loading: " + ix0); ix0++;}
+				in.close();
+
+				if(outputcsv){file_f2 = new File("XMX" + xloopx0 + ".CSV");}
+				else{file_f2 = new File("LSF" + xloopx0 + ".CSV");}
+
+				file_f2.delete();
+
+			}catch (IOException e){t1.setText("NO more files to compress."); break;}
+
+		}//for
+
+		//System.out.println(ix0);
+
+
+		try {
+
+			BufferedWriter out;
+		   	if(outputcsv){out = new BufferedWriter(new FileWriter("XMX.CSV"));}
+			else{out = new BufferedWriter(new FileWriter("LSF.CSV"));}
+
+			for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//********
+
+		        buttonl[4].setText("Printing: " + (xloopx0 + 1));
+		        out.write(compresser[xloopx0]);
+		        out.newLine();
+
+			}//for
+
+	    	out.close();
+
+	    }catch (IOException e){}
+
 	}//combinex
 
 
@@ -1998,16 +2185,16 @@ System.out.println("vs " + nm.vulture_settings.length());
 //how many times should the given cryteria be searched for on each page. 
 	public void cuttypex(){
 
-	if(cuttype == 1){cuttype = 2; cb0.setText("CutType(" + cuttype + ")");}
-	else if(cuttype == 2){cuttype = 3; cb0.setText("CutType(" + cuttype + ")");}
-	else if(cuttype == 3){cuttype = 4; cb0.setText("CutType(" + cuttype + ")");}
-	else if(cuttype == 4){cuttype = 5; cb0.setText("CutType(" + cuttype + ")");}
-	else if(cuttype == 5){cuttype = 10; cb0.setText("CutType(" + cuttype + ")");}
-	else if(cuttype == 10){cuttype = runs1; cb0.setText("CutType(all)");}
-	else if(cuttype == runs1){cuttype = 1; cb0.setText("CutType(" + cuttype + ")");}
-	else{cuttype = 1; cb0.setText("CutType(" + cuttype + ")");}
+		if(cuttype == 1){cuttype = 2; cb0.setText("CutType(" + cuttype + ")");}
+		else if(cuttype == 2){cuttype = 3; cb0.setText("CutType(" + cuttype + ")");}
+		else if(cuttype == 3){cuttype = 4; cb0.setText("CutType(" + cuttype + ")");}
+		else if(cuttype == 4){cuttype = 5; cb0.setText("CutType(" + cuttype + ")");}
+		else if(cuttype == 5){cuttype = 10; cb0.setText("CutType(" + cuttype + ")");}
+		else if(cuttype == 10){cuttype = runs1; cb0.setText("CutType(all)");}
+		else if(cuttype == runs1){cuttype = 1; cb0.setText("CutType(" + cuttype + ")");}
+		else{cuttype = 1; cb0.setText("CutType(" + cuttype + ")");}
 
-	t1.setText("How many of the given items should be screaped each pass?");
+		t1.setText("How many of the given items should be screaped each pass?");
 
 	}//cuttypex
 
@@ -2019,19 +2206,22 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 //change incomming pages text to lower case. 
 	public void tolowercasex(){
-	if(to_lower_caseb){
 
-	cb2.setText("toLowerCase(off)");
-	to_lower_caseb = false;
-	
-	}//if
-	else{//***
+		if(to_lower_caseb){
 
-	cb2.setText("toLowerCase(on)");
-	to_lower_caseb = true;
+			cb2.setText("toLowerCase(off)");
+			to_lower_caseb = false;
+		
+		}//if
+		else{//***
 
-	}//else
-	t1.setText("toLowerCase(on) converts all incoming scraping pages to lower case. If (off) incomming page data will contain both lower case and upper case characters.");
+			cb2.setText("toLowerCase(on)");
+			to_lower_caseb = true;
+
+		}//else
+
+		t1.setText("toLowerCase(on) converts all incoming scraping pages to lower case. If (off) incomming page data will contain both lower case and upper case characters.");
+
 	}//tolowercase
 
 
@@ -2044,15 +2234,15 @@ System.out.println("vs " + nm.vulture_settings.length());
 //change sleep number up.
 	public void changesleep(){
 
-	if(sleepx == 0){sleepx = 1; cb5.setText("Sleep(1s)");}
-	else if(sleepx == 1){sleepx = 2; cb5.setText("Sleep(2s)");}
-	else if(sleepx == 2){sleepx = 3; cb5.setText("Sleep(3s)");}
-	else if(sleepx == 3){sleepx = 4; cb5.setText("Sleep(4s)");}
-	else if(sleepx == 4){sleepx = 5; cb5.setText("Sleep(5s)");}
-	else if(sleepx == 5){sleepx = 0; cb5.setText("Sleep(0s)");}
-	else{sleepx = 0; cb5.setText("Sleep(0s)");}
+		if(sleepx == 0){sleepx = 1; cb5.setText("Sleep(1s)");}
+		else if(sleepx == 1){sleepx = 2; cb5.setText("Sleep(2s)");}
+		else if(sleepx == 2){sleepx = 3; cb5.setText("Sleep(3s)");}
+		else if(sleepx == 3){sleepx = 4; cb5.setText("Sleep(4s)");}
+		else if(sleepx == 4){sleepx = 5; cb5.setText("Sleep(5s)");}
+		else if(sleepx == 5){sleepx = 0; cb5.setText("Sleep(0s)");}
+		else{sleepx = 0; cb5.setText("Sleep(0s)");}
 
-	t1.setText("Set a sleep time between each scrape.");
+		t1.setText("Set a sleep time between each scrape.");
 
 	}//changesleep
 
@@ -2065,20 +2255,11 @@ System.out.println("vs " + nm.vulture_settings.length());
 //open the replace program. 
 	public void view_csv_file(){
 
-	showinfox2();
-	replace rxp = new replace();
+		showinfox2();
+		replace rxp = new replace();
 
 	}//view
 
-
-
-//open the cfa program. 
-	//public void view_csv_file(){
-
-	//showinfox3();
-	//cfa rxc = new cfa();
-
-	//}//view
 
 
 
@@ -2091,7 +2272,7 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void showexamplex(){
 
-	testfx[0].setText("   <*image*>          Note: title               find1: <div>              0            find2: </div>             0");
+		testfx[0].setText("   <*image*>          Note: title               find1: <div>              0            find2: </div>             0");
 
 	}//show example
 
@@ -2102,18 +2283,18 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void showinfox0(){
 
-	cx0 = blank;
+		cx0 = blank;
 
-	cx0 = cx0 + "Link scraping. This section of the program is designed to gather links to individual web pages. Which then can be scraped in unison to harvest all content from a large website.\n";
-	cx0 = cx0 + "Once you have gathered all the links on a website. You can scrape them all by switching to the Output(CSV) section and pressing Scrape LSF.\n";
-	cx0 = cx0 + "The Link List \"LSF.CSV\" is a CSV file of all the pages you want to scrape. For example a website's product list.\n";
-	cx0 = cx0 + "Before you can scrape all the content you want, you must build the Link List by either scraping the links, by building a list using the Create Link List fields, or by adding them one by one in the URL text field and pressing \"Add.\"\n";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "Below is the 1 scraping field you can use to scrape links from a web site. The green fields are for optional notes that could be carried over to the CSV later. For example: if you entered US or UK into the fields you could then insert that text later into the CSV by using this <*sk2*> or <*sk3*>.\n";
-	cx0 = cx0 + "All links that are scraped are saved in LSF files.";
-	cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "Link scraping. This section of the program is designed to gather links to individual web pages. Which then can be scraped in unison to harvest all content from a large website.\n";
+		cx0 = cx0 + "Once you have gathered all the links on a website. You can scrape them all by switching to the Output(CSV) section and pressing Scrape LSF.\n";
+		cx0 = cx0 + "The Link List \"LSF.CSV\" is a CSV file of all the pages you want to scrape. For example a website's product list.\n";
+		cx0 = cx0 + "Before you can scrape all the content you want, you must build the Link List by either scraping the links, by building a list using the Create Link List fields, or by adding them one by one in the URL text field and pressing \"Add.\"\n";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "Below is the 1 scraping field you can use to scrape links from a web site. The green fields are for optional notes that could be carried over to the CSV later. For example: if you entered US or UK into the fields you could then insert that text later into the CSV by using this <*sk2*> or <*sk3*>.\n";
+		cx0 = cx0 + "All links that are scraped are saved in LSF files.";
+		cx0 = cx0 + "\n\n";
 
-	t1.setText(cx0);
+		t1.setText(cx0);
 
 	}//showinfox1
 
@@ -2125,47 +2306,47 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void showinfox1(){
 
-	cx0 = blank;
+		cx0 = blank;
 
-	cx0 = cx0 + "Scrape Content. This section of the program is for scraping content off web pages. If you use the URL field at the top you can scrape 1 page. If you've built a Link List you can scrape all web pages in that list by pressing \"Scrape LSF\"\n";
-	cx0 = cx0 + "To scrape links switch to Output(LSF).\n\n";
-	cx0 = cx0 + "Choose a web page you want to scrape.\n";
-	cx0 = cx0 + "Put the URL in the very top text field and press GO.\n";
-	cx0 = cx0 + "the web page will be shown as text in this large text box. Choose a section you want to scrape by looking through the text or use another program.\n";
-	cx0 = cx0 + "After you know what you want to scrape, use the 12 scraping sections located in the middle of the program to harvest the data. ";
-	cx0 = cx0 + "Each of the 12 scraping sections have 6 text fields which need to be defined. Here are their requirements.\n\n";
-	cx0 = cx0 + "Program codes go in the first field. Below are the program codes that can be used. This is not required for simple scraping.\n";
-	cx0 = cx0 + "<*sk*> = Example. No value. \n";
-	cx0 = cx0 + "<*url*> = Get the URL of this page. \n";
-	cx0 = cx0 + "<*page*> = Save the full page to an output file. \n";
-	cx0 = cx0 + "<*image*> = Gets this URLs image and saves it's current name. \n";
-	cx0 = cx0 + "<*image*1*> = Gets this URLs image and saves it's name as an increasing integer. 1,2,3,4... \n";
-	cx0 = cx0 + "<*save*> = Saves this scraping field's content as the name for <*image*2*>\n";
-	cx0 = cx0 + "<*image*2*> = Uses the info in <*save*> for the name of this image.\n";
-	cx0 = cx0 + "<*last*> = LastIndexOf \n";
-	cx0 = cx0 + "<*sk0*> - <*sk2*> = Enter info from LinkList";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "The second field: \"name:\" is a NOTE field for optional information that will be inserted before the scraped content.\n";
-	cx0 = cx0 + "Example: \"name:\" <your scraped content>. You cannot use this field for images, or the image URL will be changed and the program won't find the image.";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "The 3rd text field: \"find1\" is the first search field, which is used to find the text on the website you want to scrape.\n";
-	cx0 = cx0 + "Example: \"<div>\" will find the first <div> on the page.";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "The 4th text field which is small: \"0\" is a number field, which tells the program how far over to the left or right to go before saving data.\n";
-	cx0 = cx0 + "Example: A \"5\" will move the start position from here: *<div>hi</div> to here: <div>*hi</div>";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "The 5th text field: \"find2\" is the second search field which tells the program when to stop scraping.\n";
-	cx0 = cx0 + "Example: \"</div>\" in this field will stop the scrape as soon as it finds that text.";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "The 6th text field: \"0\" is the same as the 4th it moves the scraped string left or right to remove unneeded content.\n";
-	cx0 = cx0 + "Example: A \"-1\" in this field will move the string from here: <div>hi</div>* to here <div>hi<div*>";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "If we wanted to take this line of text: \"Hi there\" from this HTML section: <div>Hi there</div> the set up would look like this: \"[  ] [  ] [<div>    ][5] [</div>   ][0]";
-	cx0 = cx0 + "\n\n";
-	cx0 = cx0 + "Press Test, then Cut, Print, Compress. And your scraped content will be printed to XMX.CSV. You can then use the Java Replace tool to clean up the content.";
-	cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "Scrape Content. This section of the program is for scraping content off web pages. If you use the URL field at the top you can scrape 1 page. If you've built a Link List you can scrape all web pages in that list by pressing \"Scrape LSF\"\n";
+		cx0 = cx0 + "To scrape links switch to Output(LSF).\n\n";
+		cx0 = cx0 + "Choose a web page you want to scrape.\n";
+		cx0 = cx0 + "Put the URL in the very top text field and press GO.\n";
+		cx0 = cx0 + "the web page will be shown as text in this large text box. Choose a section you want to scrape by looking through the text or use another program.\n";
+		cx0 = cx0 + "After you know what you want to scrape, use the 12 scraping sections located in the middle of the program to harvest the data. ";
+		cx0 = cx0 + "Each of the 12 scraping sections have 6 text fields which need to be defined. Here are their requirements.\n\n";
+		cx0 = cx0 + "Program codes go in the first field. Below are the program codes that can be used. This is not required for simple scraping.\n";
+		cx0 = cx0 + "<*sk*> = Example. No value. \n";
+		cx0 = cx0 + "<*url*> = Get the URL of this page. \n";
+		cx0 = cx0 + "<*page*> = Save the full page to an output file. \n";
+		cx0 = cx0 + "<*image*> = Gets this URLs image and saves it's current name. \n";
+		cx0 = cx0 + "<*image*1*> = Gets this URLs image and saves it's name as an increasing integer. 1,2,3,4... \n";
+		cx0 = cx0 + "<*save*> = Saves this scraping field's content as the name for <*image*2*>\n";
+		cx0 = cx0 + "<*image*2*> = Uses the info in <*save*> for the name of this image.\n";
+		cx0 = cx0 + "<*last*> = LastIndexOf \n";
+		cx0 = cx0 + "<*sk0*> - <*sk2*> = Enter info from LinkList";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "The second field: \"name:\" is a NOTE field for optional information that will be inserted before the scraped content.\n";
+		cx0 = cx0 + "Example: \"name:\" <your scraped content>. You cannot use this field for images, or the image URL will be changed and the program won't find the image.";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "The 3rd text field: \"find1\" is the first search field, which is used to find the text on the website you want to scrape.\n";
+		cx0 = cx0 + "Example: \"<div>\" will find the first <div> on the page.";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "The 4th text field which is small: \"0\" is a number field, which tells the program how far over to the left or right to go before saving data.\n";
+		cx0 = cx0 + "Example: A \"5\" will move the start position from here: *<div>hi</div> to here: <div>*hi</div>";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "The 5th text field: \"find2\" is the second search field which tells the program when to stop scraping.\n";
+		cx0 = cx0 + "Example: \"</div>\" in this field will stop the scrape as soon as it finds that text.";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "The 6th text field: \"0\" is the same as the 4th it moves the scraped string left or right to remove unneeded content.\n";
+		cx0 = cx0 + "Example: A \"-1\" in this field will move the string from here: <div>hi</div>* to here <div>hi<div*>";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "If we wanted to take this line of text: \"Hi there\" from this HTML section: <div>Hi there</div> the set up would look like this: \"[  ] [  ] [<div>    ][5] [</div>   ][0]";
+		cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "Press Test, then Cut, Print, Compress. And your scraped content will be printed to XMX.CSV. You can then use the Java Replace tool to clean up the content.";
+		cx0 = cx0 + "\n\n";
 
-	t1.setText(cx0);
+		t1.setText(cx0);
 
 	}//showinfox1
 
@@ -2178,21 +2359,21 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void showinfox2(){
 
-	cx0 = blank;
+		cx0 = blank;
 
-	cx0 = cx0 + "This Advanced Replace tool has features which will help you clean up your scraped content.\n\n";
-	cx0 = cx0 + "When you first use the tool it will make a new file called XMXR.CSV to work with. If you discover you have a problem delete your XMXR.CSV file and start over.\n\n";
-	cx0 = cx0 + "Press CSV Cleanup to replace the program <*,*> separators with , and , with .\n\n";
-	cx0 = cx0 + "After the CSV Cleanup, your file should be in a clean viewable form. Then you can use the Java Replace tools on the right to refine it.\n\n";
-	cx0 = cx0 + "Load. This allows you to load any file. XMXR will be loaded automatically.\n\n";
-	cx0 = cx0 + "Replace. This will replace any line of text with the line of text in Section B.\n\n";
-	cx0 = cx0 + "Delete. This tool will delete any content that is between Section A and B. Example: if section A has < and B has > all HTML content will be deleted.\n\n";
-	cx0 = cx0 + "Contains. This button allows you to delete any row that contains Section A's content. Or doesn't contains Sections B's content.\n\n";
-	cx0 = cx0 + "Number. The text string between A,B will be deleted. If A = 0 and B = 1 the first letter of the row will be deleted.\n\n";
-	cx0 = cx0 + "Switch. After you make an edit by using one of the tools, a new file will be created called XMXout.CSV. If you like the result, push Switch to change it to XMXR.CSV. If you made a mistake do not push Switch and just try again.";
-	cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "This Advanced Replace tool has features which will help you clean up your scraped content.\n\n";
+		cx0 = cx0 + "When you first use the tool it will make a new file called XMXR.CSV to work with. If you discover you have a problem delete your XMXR.CSV file and start over.\n\n";
+		cx0 = cx0 + "Press CSV Cleanup to replace the program <*,*> separators with , and , with .\n\n";
+		cx0 = cx0 + "After the CSV Cleanup, your file should be in a clean viewable form. Then you can use the Java Replace tools on the right to refine it.\n\n";
+		cx0 = cx0 + "Load. This allows you to load any file. XMXR will be loaded automatically.\n\n";
+		cx0 = cx0 + "Replace. This will replace any line of text with the line of text in Section B.\n\n";
+		cx0 = cx0 + "Delete. This tool will delete any content that is between Section A and B. Example: if section A has < and B has > all HTML content will be deleted.\n\n";
+		cx0 = cx0 + "Contains. This button allows you to delete any row that contains Section A's content. Or doesn't contains Sections B's content.\n\n";
+		cx0 = cx0 + "Number. The text string between A,B will be deleted. If A = 0 and B = 1 the first letter of the row will be deleted.\n\n";
+		cx0 = cx0 + "Switch. After you make an edit by using one of the tools, a new file will be created called XMXout.CSV. If you like the result, push Switch to change it to XMXR.CSV. If you made a mistake do not push Switch and just try again.";
+		cx0 = cx0 + "\n\n";
 
-	t1.setText(cx0);
+		t1.setText(cx0);
 
 	}//showinfox2
 
@@ -2203,16 +2384,16 @@ System.out.println("vs " + nm.vulture_settings.length());
 
 	public void showinfox3(){
 
-	cx0 = blank;
+		cx0 = blank;
 
-	cx0 = cx0 + "This link building tool creates a Link List of increasing page numbers.\n";
-	cx0 = cx0 + "The first field is for the URL: http://www.this.com/page-\n";
-	cx0 = cx0 + "The second field is for the page frequency: 1,2,3, 5,10,15.\n";
-	cx0 = cx0 + "The 3rd field is for the end part of the URL: .html\n";
-	cx0 = cx0 + "And the last field is for the number of links to be generated.";
-	cx0 = cx0 + "\n\n";
+		cx0 = cx0 + "This link building tool creates a Link List of increasing page numbers.\n";
+		cx0 = cx0 + "The first field is for the URL: http://www.this.com/page-\n";
+		cx0 = cx0 + "The second field is for the page frequency: 1,2,3, 5,10,15.\n";
+		cx0 = cx0 + "The 3rd field is for the end part of the URL: .html\n";
+		cx0 = cx0 + "And the last field is for the number of links to be generated.";
+		cx0 = cx0 + "\n\n";
 
-	t1.setText(cx0);
+		t1.setText(cx0);
 
 	}//showinfox2
 
@@ -2232,115 +2413,129 @@ System.out.println("vs " + nm.vulture_settings.length());
 //change output from CSV to LSF.
 	public void outputx(){
 
-	if(cb6.getText().equals("Output(LSF)")){outputcsv = true; cb6.setText("Output(CSV)");}
-	else{outputcsv = false; cb6.setText("Output(LSF)");}
+		if(cb6.getText().equals("Output(LSF)")){outputcsv = true; cb6.setText("Output(CSV)");}
+		else{outputcsv = false; cb6.setText("Output(LSF)");}
 
-	setoutputx();
+		setoutputx();
+
 	}//outputx**************
 
 	public void setoutputx(){//***********************************************************
 
-	if(outputcsv){
-	showinfox1();
+		if(outputcsv){
 
-	cuttype = 1; cb0.setText("CutType(" + cuttype + ")");
+			showinfox1();
 
-	for(int xloopx0 = 0; xloopx0 < 12; xloopx0++){//****************************
-	f_xf_x[xloopx0][0].setEditable(true);
-	f_xf_x[xloopx0][0].setBackground(blackx);
-	f_xf_x[xloopx0][1].setEditable(true);
-	f_xf_x[xloopx0][1].setBackground(lightgreenx);
-	f_xf_x[xloopx0][2].setEditable(true);
-	f_xf_x[xloopx0][2].setBackground(xblue);
-	f_xf_x[xloopx0][3].setEditable(true);
-	f_xf_x[xloopx0][3].setBackground(blackx);
-	f_xf_x[xloopx0][4].setEditable(true);
-	f_xf_x[xloopx0][4].setBackground(xblue);
-	f_xf_x[xloopx0][5].setEditable(true);
-	f_xf_x[xloopx0][5].setBackground(blackx);
-	}//for**************************************************************
+			cuttype = 1; cb0.setText("CutType(" + cuttype + ")");
 
-	if(linklist[0].length() > 0){MHTF.setText(linklist[0]);}
-	else{MHTF.setText(switchHTML[0]);}
+			for(int xloopx0 = 0; xloopx0 < 12; xloopx0++){//****************************
 
-	searchtop[0].setText(switchPRECUT[0][1]);
-	searchtop[1].setText(switchPRECUT[1][1]);
+				f_xf_x[xloopx0][0].setEditable(true);
+				f_xf_x[xloopx0][0].setBackground(blackx);
+				f_xf_x[xloopx0][1].setEditable(true);
+				f_xf_x[xloopx0][1].setBackground(lightgreenx);
+				f_xf_x[xloopx0][2].setEditable(true);
+				f_xf_x[xloopx0][2].setBackground(xblue);
+				f_xf_x[xloopx0][3].setEditable(true);
+				f_xf_x[xloopx0][3].setBackground(blackx);
+				f_xf_x[xloopx0][4].setEditable(true);
+				f_xf_x[xloopx0][4].setBackground(xblue);
+				f_xf_x[xloopx0][5].setEditable(true);
+				f_xf_x[xloopx0][5].setBackground(blackx);
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
-	f_xf_x[xloopx0][xloopx1].setText(switchSCAPE[xloopx0][xloopx1][1]);
-	}//for
-	}//for
+			}//for**************************************************************
 
-	for(int xloopx0 = 0; xloopx0 < 12; xloopx0++){//*************
-	testfx[xloopx0].setText("Status: Test.");
-	}//for**********************************************
+			if(linklist[0].length() > 0){MHTF.setText(linklist[0]);}
+			else{MHTF.setText(switchHTML[0]);}
 
-	}//if********
-	else{//******
+			searchtop[0].setText(switchPRECUT[0][1]);
+			searchtop[1].setText(switchPRECUT[1][1]);
 
-	cuttype = runs1; cb0.setText("CutType(all)");
+			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
+				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
+					f_xf_x[xloopx0][xloopx1].setText(switchSCAPE[xloopx0][xloopx1][1]);
+				}//for
+			}//for
 
-	showinfox0();
-	//cuttype = runs1;
-	//cb0.setText("CutType(all)");
+			for(int xloopx0 = 0; xloopx0 < 12; xloopx0++){//*************
+				testfx[xloopx0].setText("Status: Test.");
+			}//for**********************************************
 
-	for(int xloopx0 = 1; xloopx0 < 12; xloopx0++){//****************************
-	 f_xf_x[xloopx0][0].setEditable(false);
-	 f_xf_x[xloopx0][0].setBackground(darkgray08);
-	 f_xf_x[xloopx0][1].setEditable(false);
-	 f_xf_x[xloopx0][1].setBackground(darkgray08);
-	 f_xf_x[xloopx0][2].setEditable(false);
-	 f_xf_x[xloopx0][2].setBackground(darkgray08);
-	 f_xf_x[xloopx0][3].setEditable(false);
-	 f_xf_x[xloopx0][3].setBackground(darkgray08);
-	 f_xf_x[xloopx0][4].setEditable(false);
-	 f_xf_x[xloopx0][4].setBackground(darkgray08);
-	 f_xf_x[xloopx0][5].setEditable(false);
-	 f_xf_x[xloopx0][5].setBackground(darkgray08);
-	}//for**************************************************************
+		}//if********
+		else{//******
 
-	MHTF.setText(switchHTML[0]);
-	searchtop[0].setText(switchPRECUT[0][0]);
-	searchtop[1].setText(switchPRECUT[1][0]);
+			cuttype = runs1; cb0.setText("CutType(all)");
 
-	for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************	
-	for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
-	 f_xf_x[xloopx0][xloopx1].setText(switchSCAPE[xloopx0][xloopx1][0]);
-	}//for
-	}//for
+			showinfox0();
+			//cuttype = runs1;
+			//cb0.setText("CutType(all)");
 
-	for(int xloopx0 = 1; xloopx0 < 12; xloopx0++){//****************************
-	 //f_xf_x[xloopx0][0].setText("");
-	 f_xf_x[xloopx0][1].setText("");
-	 f_xf_x[xloopx0][2].setText("");
-	 f_xf_x[xloopx0][3].setText("");
-	 f_xf_x[xloopx0][4].setText("");
-	 f_xf_x[xloopx0][5].setText("");
-	}//for**************************************************************
+			for(int xloopx0 = 1; xloopx0 < 12; xloopx0++){//****************************
 
-	testfx[1].setText("Use this green field to enter an optional NOTE for the next stage. <*sk1*>");
-	 f_xf_x[1][0].setEditable(true);
-	 f_xf_x[1][1].setEditable(true);
-	 f_xf_x[1][1].setBackground(lightgreenx);
-	 f_xf_x[1][1].setText(switchSCAPE[1][1][0]);
+				f_xf_x[xloopx0][0].setEditable(false);
+				f_xf_x[xloopx0][0].setBackground(darkgray08);
+				f_xf_x[xloopx0][1].setEditable(false);
+				f_xf_x[xloopx0][1].setBackground(darkgray08);
+				f_xf_x[xloopx0][2].setEditable(false);
+				f_xf_x[xloopx0][2].setBackground(darkgray08);
+				f_xf_x[xloopx0][3].setEditable(false);
+				f_xf_x[xloopx0][3].setBackground(darkgray08);
+				f_xf_x[xloopx0][4].setEditable(false);
+				f_xf_x[xloopx0][4].setBackground(darkgray08);
+				f_xf_x[xloopx0][5].setEditable(false);
+				f_xf_x[xloopx0][5].setBackground(darkgray08);
 
-	testfx[2].setText("Use this green field to enter an optional NOTE for the next stage. <*sk2*>");
-	 f_xf_x[2][0].setEditable(true);
-	 f_xf_x[2][1].setEditable(true);
-	 f_xf_x[2][1].setBackground(lightgreenx);
-	 f_xf_x[2][1].setText(switchSCAPE[2][1][0]);
+			}//for**************************************************************
 
-	for(int xloopx0 = 3; xloopx0 < 12; xloopx0++){//********
-	testfx[xloopx0].setText("");
-	}//for*****************************************
+			MHTF.setText(switchHTML[0]);
+			searchtop[0].setText(switchPRECUT[0][0]);
+			searchtop[1].setText(switchPRECUT[1][0]);
 
-	}//else
+			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//*****************************
 
-	if(linknumber2 > runs1){
-	buttonl[5].setText("!Links > 10,000");
-	t1.setText("!Link number exceeds 10,000! " + linknumber2 + " If you continue with this scrape the linklist will be cut down to 10,000 items. Please open the LSF.CSV file and edit it down to under 10,000 items per scrape.");
-	}//if
+				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//*****************************	
+					f_xf_x[xloopx0][xloopx1].setText(switchSCAPE[xloopx0][xloopx1][0]);
+				}//for
+
+			}//for
+
+			for(int xloopx0 = 1; xloopx0 < 12; xloopx0++){//****************************
+
+				//f_xf_x[xloopx0][0].setText("");
+				f_xf_x[xloopx0][1].setText("");
+				f_xf_x[xloopx0][2].setText("");
+				f_xf_x[xloopx0][3].setText("");
+				f_xf_x[xloopx0][4].setText("");
+				f_xf_x[xloopx0][5].setText("");
+
+			}//for**************************************************************
+
+			testfx[1].setText("Use this green field to enter an optional NOTE for the next stage. <*sk1*>");
+			f_xf_x[1][0].setEditable(true);
+			f_xf_x[1][1].setEditable(true);
+			f_xf_x[1][1].setBackground(lightgreenx);
+			f_xf_x[1][1].setText(switchSCAPE[1][1][0]);
+
+			testfx[2].setText("Use this green field to enter an optional NOTE for the next stage. <*sk2*>");
+			f_xf_x[2][0].setEditable(true);
+			f_xf_x[2][1].setEditable(true);
+			f_xf_x[2][1].setBackground(lightgreenx);
+			f_xf_x[2][1].setText(switchSCAPE[2][1][0]);
+
+			for(int xloopx0 = 3; xloopx0 < 12; xloopx0++){//********
+
+				testfx[xloopx0].setText("");
+
+			}//for*****************************************
+
+		}//else
+
+		if(linknumber2 > runs1){
+
+			buttonl[5].setText("!Links > 10,000");
+			t1.setText("!Link number exceeds 10,000! " + linknumber2 + " If you continue with this scrape the linklist will be cut down to 10,000 items. Please open the LSF.CSV file and edit it down to under 10,000 items per scrape.");
+
+		}//if
 
 	}//setoutputx
 
@@ -2360,7 +2555,7 @@ System.out.println("vs " + nm.vulture_settings.length());
 //handel all the button clicks. 
 public void actionPerformed(ActionEvent event){
 
-        //requestFocus();
+    //requestFocus();
 	if (event.getSource() == bx0 && workx == true){gox();}//scrapex();
 	if (event.getSource() == bx1 && workx == true){add_to_lsf();}
 	if (event.getSource() == bx2 && workx == true){makell();}
@@ -2387,12 +2582,16 @@ public void actionPerformed(ActionEvent event){
 
 
 //program sleep 
-	public void tabxx(){
+	public void tabxx() {
 
-	buttonl[6].setText("Status: sleeping.");
-	try{
-	Thread.sleep(sleepx * 1000);
-	}catch (InterruptedException e){}
+		buttonl[6].setText("Status: sleeping.");
+
+		try {
+
+			Thread.sleep(sleepx * 1000);
+
+		} catch (InterruptedException e){}
+
 	}//tabxx
 
 
@@ -2400,7 +2599,7 @@ public void actionPerformed(ActionEvent event){
 
     public static void main(String[] args) {
 
-    scraper2 goscrapex = new scraper2();
+    	scraper2 goscrapex = new scraper2();
 
     }//main
 
@@ -2409,22 +2608,33 @@ public void actionPerformed(ActionEvent event){
 
 
 
-class BackgroundPanel extends JPanel{
-  Image image;
-  public BackgroundPanel(){
-    try{
+	class BackgroundPanel extends JPanel{
 
-      image = javax.imageio.ImageIO.read(new java.net.URL(getClass().getResource("images/fantasy.jpg"), "fantasy.jpg"));
+	    Image image;
 
-    }catch (Exception e) { System.out.println("Failed001"); }
-  }//backgroundpanel
+		public BackgroundPanel(){
 
-  protected void paintComponent(Graphics g){
-    super.paintComponent(g); 
-    if (image != null)
-      g.drawImage(image, 0,0,this.getWidth(),this.getHeight(),this);
-  }//paint
-}//jpanel
+		    try {
+
+		      	image = javax.imageio.ImageIO.read(new java.net.URL(getClass().getResource("images/fantasy.jpg"), "fantasy.jpg"));
+
+		    } catch (Exception e) { System.out.println("Failed001"); }
+
+		}//backgroundpanel
+
+		protected void paintComponent(Graphics g){
+
+		    super.paintComponent(g);
+
+		    if (image != null) {
+		      
+		      	g.drawImage(image, 0,0,this.getWidth(),this.getHeight(),this);
+
+		    }
+
+		}//paint
+
+	}//jpanel
 
 
 
