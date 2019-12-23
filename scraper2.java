@@ -278,11 +278,11 @@ public scraper2(){//****************************
 	labelx.setBackground(blackx);
 	labelx.setForeground(whitex);
 
-	lpage1.setPreferredSize(new Dimension(300, 20));
+	lpage1.setPreferredSize(new Dimension(345, 20));
 	lpage1.setBackground(blackx);
 	lpage1.setForeground(whitex);
 
-	lpage2.setPreferredSize(new Dimension(300, 20));
+	lpage2.setPreferredSize(new Dimension(345, 20));
 	lpage2.setBackground(blackx);
 	lpage2.setForeground(whitex);
 
@@ -337,132 +337,148 @@ public scraper2(){//****************************
 	bx0 = new JButton("Go");
 	bx0.setMargin(new Insets(0, 0, 0, 0));  
 	bx0.addActionListener(this);
-	bx0.setPreferredSize(new Dimension(70, 20));
-	bx0.setIcon(imx0);
+	bx0.setPreferredSize(new Dimension(70, 25));
+	//bx0.setIcon(imx0);
 	bx0.setHorizontalTextPosition(JButton.CENTER);
 	bx0.setForeground(bluex3);
+	bx0.setBackground(blackx);
 
 	bx1 = new JButton("Add");
 	bx1.setMargin(new Insets(0, 0, 0, 0));  
 	bx1.addActionListener(this);
-	bx1.setPreferredSize(new Dimension(70, 20));
-	bx1.setIcon(imx0);
+	bx1.setPreferredSize(new Dimension(70, 25));
+	//bx1.setIcon(imx0);
 	bx1.setHorizontalTextPosition(JButton.CENTER);
 	bx1.setForeground(whitex);
+	bx1.setBackground(blackx);
 
 	bx2 = new JButton("Create Link List");
 	bx2.setMargin(new Insets(0, 0, 0, 0));  
 	bx2.addActionListener(this);
-	bx2.setPreferredSize(new Dimension(145, 20));
-	bx2.setIcon(imx0);
+	bx2.setPreferredSize(new Dimension(145, 25));
+	//bx2.setIcon(imx0);
 	bx2.setHorizontalTextPosition(JButton.CENTER);
 	bx2.setForeground(whitex);
+	bx2.setBackground(blackx);
 
 
 	cb0 = new JButton("CutType(1)");
 	cb0.setMargin(new Insets(0, 0, 0, 0));  
 	cb0.addActionListener(this);
-	cb0.setPreferredSize(new Dimension(85, 20));
-	cb0.setIcon(imx0);
+	cb0.setPreferredSize(new Dimension(85, 25));
+	//cb0.setIcon(imx0);
 	cb0.setHorizontalTextPosition(JButton.CENTER);
 	cb0.setForeground(bluex3);
+	cb0.setBackground(blackx);
 
 	cb1 = new JButton("Save");
 	cb1.setMargin(new Insets(0, 0, 0, 0));  
 	cb1.addActionListener(this);
-	cb1.setPreferredSize(new Dimension(70, 20));
-	cb1.setIcon(imx0);
+	cb1.setPreferredSize(new Dimension(70, 25));
+	//cb1.setIcon(imx0);
 	cb1.setHorizontalTextPosition(JButton.CENTER);
 	cb1.setForeground(whitex);
+	cb1.setBackground(blackx);
 
 	cb2 = new JButton("toLowerCase(off)");
 	cb2.setMargin(new Insets(0, 0, 0, 0));  
 	cb2.addActionListener(this);
-	cb2.setPreferredSize(new Dimension(120, 20));
-	cb2.setIcon(imx0);
+	cb2.setPreferredSize(new Dimension(120, 25));
+	//cb2.setIcon(imx0);
 	cb2.setHorizontalTextPosition(JButton.CENTER);
 	cb2.setForeground(whitex);
+	cb2.setBackground(blackx);
 
 	cb3 = new JButton("Example");
 	cb3.setMargin(new Insets(0, 0, 0, 0));  
 	cb3.addActionListener(this);
-	cb3.setPreferredSize(new Dimension(90, 20));
-	cb3.setIcon(imx0);
+	cb3.setPreferredSize(new Dimension(90, 25));
+	//cb3.setIcon(imx0);
 	cb3.setHorizontalTextPosition(JButton.CENTER);
 	cb3.setForeground(whitex);
+	cb3.setBackground(blackx);
 
 	cb4 = new JButton("Java Replace");
 	cb4.setMargin(new Insets(0, 0, 0, 0));  
 	cb4.addActionListener(this);
-	cb4.setPreferredSize(new Dimension(100, 20));
-	cb4.setIcon(imx0);
+	cb4.setPreferredSize(new Dimension(100, 25));
+	//cb4.setIcon(imx0);
 	cb4.setHorizontalTextPosition(JButton.CENTER);
 	cb4.setForeground(bluex3);
+	cb4.setBackground(blackx);
 
 	cb5 = new JButton("Sleep(0s)");
 	cb5.setMargin(new Insets(0, 0, 0, 0));  
 	cb5.addActionListener(this);
-	cb5.setPreferredSize(new Dimension(90, 20));
-	cb5.setIcon(imx0);
+	cb5.setPreferredSize(new Dimension(90, 25));
+	//cb5.setIcon(imx0);
 	cb5.setHorizontalTextPosition(JButton.CENTER);
 	cb5.setForeground(whitex);
+	cb5.setBackground(blackx);
 
 	cb6 = new JButton("Output(CSV)");
 	cb6.setMargin(new Insets(0, 0, 0, 0));  
 	cb6.addActionListener(this);
-	cb6.setPreferredSize(new Dimension(90, 20));
-	cb6.setIcon(imx0);
+	cb6.setPreferredSize(new Dimension(90, 25));
+	//cb6.setIcon(imx0);
 	cb6.setHorizontalTextPosition(JButton.CENTER);
 	cb6.setForeground(bluex3);
+	cb6.setBackground(blackx);
 
 	cb7 = new JButton("Load");
 	cb7.setMargin(new Insets(0, 0, 0, 0));  
 	cb7.addActionListener(this);
-	cb7.setPreferredSize(new Dimension(70, 20));
-	cb7.setIcon(imx0);
+	cb7.setPreferredSize(new Dimension(70, 25));
+	//cb7.setIcon(imx0);
 	cb7.setHorizontalTextPosition(JButton.CENTER);
 	cb7.setForeground(whitex);
+	cb7.setBackground(blackx);
 
 
 	b1 = new JButton("Test");
 	b1.setMargin(new Insets(0, 0, 0, 0));  
 	b1.addActionListener(this);
-	b1.setPreferredSize(new Dimension(70, 20));
-	b1.setIcon(imx0);
+	b1.setPreferredSize(new Dimension(70, 25));
+	//b1.setIcon(imx0);
 	b1.setHorizontalTextPosition(JButton.CENTER);
 	b1.setForeground(whitex);
+	b1.setBackground(blackx);
 
 	b2 = new JButton("Cut");
 	b2.setMargin(new Insets(0, 0, 0, 0));  
 	b2.addActionListener(this);
-	b2.setPreferredSize(new Dimension(70, 20));
-	b2.setIcon(imx0);
+	b2.setPreferredSize(new Dimension(70, 25));
+	//b2.setIcon(imx0);
 	b2.setHorizontalTextPosition(JButton.CENTER);
 	b2.setForeground(whitex);
+	b2.setBackground(blackx);
 
 	b3 = new JButton("Print");
 	b3.setMargin(new Insets(0, 0, 0, 0));  
 	b3.addActionListener(this);
-	b3.setPreferredSize(new Dimension(70, 20));
-	b3.setIcon(imx0);
+	b3.setPreferredSize(new Dimension(70, 25));
+	//b3.setIcon(imx0);
 	b3.setHorizontalTextPosition(JButton.CENTER);
 	b3.setForeground(whitex);
+	b3.setBackground(blackx);
 
 	b4 = new JButton("Compress");
 	b4.setMargin(new Insets(0, 0, 0, 0));  
 	b4.addActionListener(this);
-	b4.setPreferredSize(new Dimension(75, 20));
-	b4.setIcon(imx0);
+	b4.setPreferredSize(new Dimension(75, 25));
+	//b4.setIcon(imx0);
 	b4.setHorizontalTextPosition(JButton.CENTER);
 	b4.setForeground(whitex);
+	b4.setBackground(blackx);
 
 	b5 = new JButton("Scrape LSF");
 	b5.setMargin(new Insets(0, 0, 0, 0));  
 	b5.addActionListener(this);
-	b5.setPreferredSize(new Dimension(75, 20));
-	b5.setIcon(imx0);
+	b5.setPreferredSize(new Dimension(75, 25));
+	//b5.setIcon(imx0);
 	b5.setHorizontalTextPosition(JButton.CENTER);
 	b5.setForeground(bluex3);
+	b5.setBackground(blackx);
 
 
 	pageinfo.setPreferredSize(new Dimension(995, 20));
@@ -472,7 +488,7 @@ public scraper2(){//****************************
 
 	//make jpanels 
     //JPanel jp0 = new JPanel();
-	jp0.setPreferredSize(new Dimension(1000, 260));
+	jp0.setPreferredSize(new Dimension(1000, 270));
 	jp0.setBackground(blackx);
 	jp0.setBorder(BorderFactory.createLineBorder(bluex2));
 	jp0.add(MHTF);
@@ -1197,23 +1213,12 @@ public scraper2(){//****************************
 
 				//System.out.println(newitems[xloopx0]);
 
-				if(GOLDX[xloopx0][xloopx1].equals("null")){t1.setText("null item found in XMX printing list.");}
-				else if(GOLDX[xloopx0][xloopx1].length() == 0){t1.setText("0 length item found in XMX printing list.");}
-				else{	
+				if (GOLDX[xloopx0][xloopx1].equals("null")) {t1.setText("null item found in XMX printing list.");}
+				else if (GOLDX[xloopx0][xloopx1].length() == 0) {t1.setText("0 length item found in XMX printing list.");}
+				else {	
 
-					if (xloopx1 < newitems[xloopx0]) {
-
-						xprinter[ix0] = xprinter[ix0] + GOLDX[xloopx0][xloopx1] + xsepxc;
-						//System.out.println("xp " + newitems[xloopx0] + " " + xprinter[ix0]);
-
-					}
-					else {
-
-						xprinter[ix0] = xprinter[ix0] + GOLDX[xloopx0][xloopx1];
-						//System.out.println("xp " + newitems[xloopx0] + " " + xprinter[ix0]);
-
-					}
-
+					xprinter[ix0] = xprinter[ix0] + GOLDX[xloopx0][xloopx1] + xsepxc;
+					//System.out.println("xp1 " + newitems.length + " " + newitems[xloopx0] + " " + xprinter[ix0]);
 
 				}//else
 
@@ -1229,6 +1234,12 @@ public scraper2(){//****************************
 		    BufferedWriter out = new BufferedWriter(new FileWriter("XMX" + savepagenumber + ".CSV"));
 
 			for (int xloopx0 = 0; xloopx0 < ix0; xloopx0++) {//****
+
+				if (xprinter[xloopx0].substring(xprinter[xloopx0].length() -5,xprinter[xloopx0].length()).equals(xsepxc)) {
+
+					xprinter[xloopx0] = xprinter[xloopx0].substring(0,xprinter[xloopx0].length() -5);
+
+				}
 
 				out.write(xprinter[xloopx0]);
 				out.newLine();
@@ -1312,7 +1323,7 @@ public scraper2(){//****************************
 
 		    BufferedWriter out = new BufferedWriter(new FileWriter("LSF" + savepagenumber + ".CSV"));
 
-			for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++){//****
+			for(int xloopx0 = 0; xloopx0 < ix0; xloopx0++) {//****
 
 				out.write(xprinter[xloopx0]);
 				out.newLine();
@@ -1321,7 +1332,7 @@ public scraper2(){//****************************
 
 	        out.close();
 
-        } catch (IOException e){}
+        } catch (IOException e) {}
 
 	}//print_txt
 
@@ -1354,25 +1365,25 @@ public scraper2(){//****************************
 		try {
 
 
-		//save the key and the hard drive size.
+			//save the key and the hard drive size.
 			sb.append("xxx" + "***" + "111111");
 		    sb.append(xsepx0);
 
-		//save the go html field 
-			if(!outputcsv){switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}	
-			else{switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}
+			//save the go html field 
+			if (!outputcsv) {switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}	
+			else {switchHTML[0] = MHTF.getText(); switchHTML[1] = linklist[0];}
 			sb.append(switchHTML[0] + xsepx0);
 			sb.append(switchHTML[1] + xsepx0);
 
-		//save the make LL field.
-			for(int xloopx0 = 0; xloopx0 < 4; xloopx0++){//********
+			//save the make LL field.
+			for (int xloopx0 = 0; xloopx0 < 4; xloopx0++) {//********
 
 		        sb.append(URL[xloopx0].getText());
 		        sb.append(xsepx0);
 
 			}//for
 
-		//save the precut field. 
+			//save the precut field. 
 			if(outputcsv){switchPRECUT[0][1] = searchtop[0].getText(); switchPRECUT[1][1] = searchtop[1].getText();}
 			else{switchPRECUT[0][0] = searchtop[0].getText(); switchPRECUT[1][0] = searchtop[1].getText();}
 				
@@ -1381,7 +1392,7 @@ public scraper2(){//****************************
 			sb.append(switchPRECUT[0][1] + xsepx0);
 			sb.append(switchPRECUT[1][1] + xsepx0);
 
-		//save the scraping fields.
+			//save the scraping fields.
 			for(int xloopx0 = 0; xloopx0 < cutnumber; xloopx0++){//********
 
 				for(int xloopx1 = 0; xloopx1 < 6; xloopx1++){//********
@@ -1406,24 +1417,24 @@ public scraper2(){//****************************
 
 			}//for
 
-		//number of cuts per page.
+			//number of cuts per page.
 			sb.append(Integer.toString(cuttype));
 		    sb.append(xsepx0);
 
-		//time out
+			//time out
 			sb.append(Integer.toString(sleepx));
 		    sb.append(xsepx0);
 
 			sb.append(Integer.toString(scraperstage));
 		    sb.append(xsepx0);
 
-		//to lower case yes or no.
+			//to lower case yes or no.
 			if (to_lower_caseb) {
 
 				sb.append(Integer.toString(1));
 		        sb.append(xsepx0);
 
-			}else{
+			} else {
 
 				sb.append(Integer.toString(0));
 		        sb.append(xsepx0);

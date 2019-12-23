@@ -111,7 +111,7 @@ Icon imx0;
 
 
 
-	replace(){//********************************************************************************************************
+replace(){//********************************************************************************************************
 	
 	super("Java Replace 7");
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
@@ -319,45 +319,53 @@ Icon imx0;
 	gold[0] = new String("");
 	gold[1] = new String("");
 
+
 	test_xmxr();
+	
+	file_open = file_open_1;
 	loadx();
 
-	}//postid**************************************************************************************************************
+}//postid**************************************************************************************************************
 
 
 
 
 	public void test_xmxr(){
 
-	if(file_open_0.exists()){l0.setText("Good."); file_open = file_open_0;}//good to go.
-	else if(file_open_1.exists()){l0.setText("Good."); file_open = file_open_1;}//good to go.
-	else if(file_open_2.exists()){l0.setText("Good."); file_open = file_open_2;}//good to go.
-	else if(file_open_3.exists()){l0.setText("Good."); file_open = file_open_3;}//good to go.
-	else if(file_open_4.exists()){l0.setText("Good."); file_open = file_open_4;}//good to go.
-	else if(file_open_5.exists()){
+		if(file_open_0.exists()){l0.setText("Good."); file_open = file_open_0;}//good to go.
+		else if(file_open_1.exists()){l0.setText("Good."); file_open = file_open_1;}//good to go.
+		else if(file_open_2.exists()){l0.setText("Good."); file_open = file_open_2;}//good to go.
+		else if(file_open_3.exists()){l0.setText("Good."); file_open = file_open_3;}//good to go.
+		else if(file_open_4.exists()){l0.setText("Good."); file_open = file_open_4;}//good to go.
+
+		if(!file_open_1.exists()){
+
+			System.out.println("switch");
+			switchsx1 = "XMX.CSV";
+			switchsx2 = "XMXR.CSV";
+			undo_edit_start();
+
+			switchsx1 = "XMX.CSV";
+			switchsx2 = "XMXRUndo.CSV";
+			undo_edit_start();
+
+		}//else if
+		else{l0.setText("NO XMXR.CSV files found!");}//no files to load.
 
 
-
-	//System.out.println("switch");
-	switchsx1 = "XMX.CSV";
-	switchsx2 = "XMXR.CSV";
-	undo_edit_start();
-
-	}//else if
-	else{l0.setText("NO XMXR.CSV files found!");}//no files to load.
+		//images folder.
 
 
-	//images folder.
+		if (file_image_1.exists()) {
 
+			carbonfiber = file_image_1.list();
 
-	if(file_image_1.exists()){
-	carbonfiber = file_image_1.list();
+			thisx = carbonfiber.length;
 
-	thisx = carbonfiber.length;
+			l3.setText("cs_images found: " + Integer.toString(thisx));
 
-	l3.setText("cs_images found: " + Integer.toString(thisx));
-	}//
-	else{l3.setText("cs_images folder was not found.");}
+		} 
+		else {l3.setText("cs_images folder was not found.");}
 
 	}//test_xmxr
 
@@ -371,22 +379,26 @@ Icon imx0;
 
 	public void loadx(){
 
-	kcountxx = 0;
-	thisx = 0;
-	main = new String("");
+		kcountxx = 0;
+		thisx = 0;
+		main = new String("");
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader(file_open));
-	String str0;
-	while ((str0 = in.readLine()) != null){gold[thisx] = str0; thisx++;}
-	in.close();} 
-	catch (IOException e) {linex0.setText("Load XMXR.CSV Fail.");}
+		try {
 
-	l0.setText("XMXR Loaded. " + Integer.toString(thisx) + " Items.");
-	if(gold[0].length() > 0){linex0.setText(gold[0]);}
-	else{linex0.setText("Row has no text.");}
-	if(gold[1].length() > 0){linex1.setText(gold[1]);}
-	else{linex1.setText("Row has no text.");}
+			BufferedReader in = new BufferedReader(new FileReader(file_open));
+			String str0;
+			while ((str0 = in.readLine()) != null){gold[thisx] = str0; thisx++;}
+			in.close();
+
+		} catch (IOException e) {linex0.setText("Load XMXR.CSV Fail.");}
+
+		l0.setText("XMXR Loaded. " + Integer.toString(thisx) + " Items.");
+
+		if(gold[0].length() > 0){linex0.setText(gold[0]);}
+		else{linex0.setText("Row has no text.");}
+
+		if(gold[1].length() > 0){linex1.setText(gold[1]);}
+		else{linex1.setText("Row has no text.");}
 
 	}//loadx
 
@@ -403,31 +415,31 @@ Icon imx0;
 
 	public void replacex(){//replace a with b
 
-	for (int loop0 = 0; loop0 < thisx; loop0++){
+		for (int loop0 = 0; loop0 < thisx; loop0++){
 
-	cx0 = gold[loop0];
-	cx1 = sectionxa.getText();
-	cx2 = sectionxb.getText();
-	l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
+		cx0 = gold[loop0];
+		cx1 = sectionxa.getText();
+		cx2 = sectionxb.getText();
+		l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
 
-	for (int loop1 = 0; loop1 < runs; loop1++){
+		for (int loop1 = 0; loop1 < runs; loop1++){
 
-	ix0 = cx0.indexOf(cx1);
-	if(ix0 == -1){break;}
-	else{
+		ix0 = cx0.indexOf(cx1);
+		if(ix0 == -1){break;}
+		else{
 
-	cx0 = cx0.substring(0, ix0) + cx2 + cx0.substring(ix0 + sectionxa.getText().length(), cx0.length());
-	gold[loop0] = cx0;
+		cx0 = cx0.substring(0, ix0) + cx2 + cx0.substring(ix0 + sectionxa.getText().length(), cx0.length());
+		gold[loop0] = cx0;
 
-	}//else
+		}//else
 
-	}//for
+		}//for
 
-	}//for
+		}//for
 
-	l0.setText("100% Compleat."); 
-	printx();
-	loadx();
+		l0.setText("100% Compleat."); 
+		printx();
+		loadx();
 
 	}//replacex
 
@@ -440,37 +452,37 @@ Icon imx0;
 
 	public void rxdelete(){//delete from
 
-	d1 = new String(sectionxa.getText());
-	d2 = new String(sectionxb.getText());
+		d1 = new String(sectionxa.getText());
+		d2 = new String(sectionxb.getText());
 
 
-	for (int loop0 = 0; loop0 < thisx; loop0++){
-	l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
-	cx0 = gold[loop0];
-	for (int loop1 = 0; loop1 < runs; loop1++){
+		for (int loop0 = 0; loop0 < thisx; loop0++){
+		l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
+		cx0 = gold[loop0];
+		for (int loop1 = 0; loop1 < runs; loop1++){
 
-	ix0 = cx0.indexOf(d1);
-	if(ix0 > -1){
+		ix0 = cx0.indexOf(d1);
+		if(ix0 > -1){
 
-	cx1 = cx0.substring(ix0, cx0.length());
+		cx1 = cx0.substring(ix0, cx0.length());
 
-	ix1 = cx1.indexOf(d2);
-	if(ix1 > -1){
+		ix1 = cx1.indexOf(d2);
+		if(ix1 > -1){
 
-	cx0 = cx0.substring(0, ix0) + cx0.substring(ix0 + ix1 + d2.length(), cx0.length());
-	gold[loop0] = cx0;
+		cx0 = cx0.substring(0, ix0) + cx0.substring(ix0 + ix1 + d2.length(), cx0.length());
+		gold[loop0] = cx0;
 
-	}//if*************
+		}//if*************
 
-	}//if*******************
-	else{break;}
+		}//if*******************
+		else{break;}
 
-	}//for
-	}//for
+		}//for
+		}//for
 
-	l0.setText("100% Compleat."); 
-	printx();
-	loadx();
+		l0.setText("100% Compleat."); 
+		printx();
+		loadx();
 
 	}//rx1
 
@@ -483,70 +495,70 @@ Icon imx0;
 
 	public void rxcontains(){//if contains ? delete
 
-	d1 = new String(sectionxa.getText());
-	d2 = new String(sectionxb.getText());
-	kcountxx = 0;
+		d1 = new String(sectionxa.getText());
+		d2 = new String(sectionxb.getText());
+		kcountxx = 0;
 
-	for (int loop0 = 0; loop0 < thisx; loop0++){//*************************************
-	l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
-	cx0 = gold[loop0];
-
-
-	ix0 = cx0.indexOf("<*,*>");
-	if(ix0 > -1){
-	cx1 = cx0.substring(0, ix0);
-
-	ix1 = cx1.indexOf(d1);
-	if(ix1 > -1 && sectionxa.getText().length() > 0){
-
-	gold[loop0] = "****";
-	kcountxx++;
-	}//if 
-	}//if
-	else{
-
-	ix1 = cx0.indexOf(d1);
-	if(ix1 > -1 && sectionxa.getText().length() > 0){
-
-	gold[loop0] = "****";
-	kcountxx++;
-	}//if 
-
-	}//else
+		for (int loop0 = 0; loop0 < thisx; loop0++){//*************************************
+		l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
+		cx0 = gold[loop0];
 
 
-//does NOT containe.
+		ix0 = cx0.indexOf("<*,*>");
+		if(ix0 > -1){
+		cx1 = cx0.substring(0, ix0);
 
-	ix0 = cx0.indexOf("<*,*>");
-	if(ix0 > -1){
-	cx1 = cx0.substring(0, ix0);
+		ix1 = cx1.indexOf(d1);
+		if(ix1 > -1 && sectionxa.getText().length() > 0){
 
-	ix1 = cx1.indexOf(d2);
-	if(ix1 == -1 && sectionxb.getText().length() > 0){
+		gold[loop0] = "****";
+		kcountxx++;
+		}//if 
+		}//if
+		else{
 
-	gold[loop0] = "****";
-	kcountxx++;
-	}//if 
-	}//if
-	else{
+		ix1 = cx0.indexOf(d1);
+		if(ix1 > -1 && sectionxa.getText().length() > 0){
 
-	ix1 = cx0.indexOf(d2);
-	if(ix1 == -1 && sectionxb.getText().length() > 0){
+		gold[loop0] = "****";
+		kcountxx++;
+		}//if 
 
-	gold[loop0] = "****";
-	kcountxx++;
-	}//if 
-
-	}//else
+		}//else
 
 
+	//does NOT containe.
 
-	}//for*****************************************************************************
+		ix0 = cx0.indexOf("<*,*>");
+		if(ix0 > -1){
+		cx1 = cx0.substring(0, ix0);
 
-	l0.setText("100% Compleat."); 
-	l3.setText("Deleted " + kcountxx + " items.");
-	printx();
-	loadx();
+		ix1 = cx1.indexOf(d2);
+		if(ix1 == -1 && sectionxb.getText().length() > 0){
+
+		gold[loop0] = "****";
+		kcountxx++;
+		}//if 
+		}//if
+		else{
+
+		ix1 = cx0.indexOf(d2);
+		if(ix1 == -1 && sectionxb.getText().length() > 0){
+
+		gold[loop0] = "****";
+		kcountxx++;
+		}//if 
+
+		}//else
+
+
+
+		}//for*****************************************************************************
+
+		l0.setText("100% Compleat."); 
+		l3.setText("Deleted " + kcountxx + " items.");
+		printx();
+		loadx();
 
 	}//rx1
 
@@ -561,37 +573,37 @@ Icon imx0;
 
 	public void afterxx(){//delete after Section A Before Section B
 
-	for (int loop0 = 0; loop0 < thisx; loop0++){
+		for (int loop0 = 0; loop0 < thisx; loop0++){
 
-	l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
+		l0.setText((loop0 * 100 / thisx) + "% Compleat."); 
 
-	cx0 = gold[loop0];
+		cx0 = gold[loop0];
 
-	cx1 = sectionxa.getText();
-	cx2 = sectionxb.getText();
+		cx1 = sectionxa.getText();
+		cx2 = sectionxb.getText();
 
-	if(cx1.length() > 0){
-	ix0 = cx0.indexOf(cx1);
-	if(ix0 > -1){
-	cx0 = cx0.substring(0, ix0);
-	gold[loop0] = cx0;
-	}//if
-	}//if
+		if(cx1.length() > 0){
+		ix0 = cx0.indexOf(cx1);
+		if(ix0 > -1){
+		cx0 = cx0.substring(0, ix0);
+		gold[loop0] = cx0;
+		}//if
+		}//if
 
 
-	if(cx2.length() > 0){
-	ix0 = cx0.indexOf(cx2);
-	if(ix0 > -1){
-	cx0 = cx0.substring(ix0, cx0.length());
-	gold[loop0] = cx0;
-	}//if
-	}//if
+		if(cx2.length() > 0){
+		ix0 = cx0.indexOf(cx2);
+		if(ix0 > -1){
+		cx0 = cx0.substring(ix0, cx0.length());
+		gold[loop0] = cx0;
+		}//if
+		}//if
 
-	}//for
+		}//for
 
-	l0.setText("100% Compleat."); 
-	printx();
-	loadx();
+		l0.setText("100% Compleat."); 
+		printx();
+		loadx();
 
 	}//numberxx
 
@@ -605,49 +617,51 @@ Icon imx0;
 
 	public void repeatx(){
 
-	ix4 = 0;
+		ix4 = 0;
 
-	for (int loop1 = 0; loop1 < thisx; loop1++){
+		for (int loop1 = 0; loop1 < thisx; loop1++){
 
-	l0.setText((loop1 * 100 / thisx) + "% Compleat."); 
+			l0.setText((loop1 * 100 / thisx) + "% Compleat."); 
 
-	//System.out.println("loop1 " + loop1);
+			//System.out.println("loop1 " + loop1);
 
-	loopc1 = loop1 + 1;
+			loopc1 = loop1 + 1;
 
-	ix0 = gold[loop1].indexOf("<*SS*>");
-	if(ix0 > -1){rep1 = gold[loop1].substring(0, ix0);}
-	else{rep1 = gold[loop1];}
+			ix0 = gold[loop1].indexOf("<*SS*>");
+			if(ix0 > -1){rep1 = gold[loop1].substring(0, ix0);}
+			else{rep1 = gold[loop1];}
 
 
-	//System.out.println("rep1 " + rep1);
-	repeatxx();
+			//System.out.println("rep1 " + rep1);
+			repeatxx();
 
-	}//for
+		}//for
 
-	l0.setText("100% Compleat."); 
-	l3.setText(ix4 + " repeats.");
-	printx();
-	loadx();
+		l0.setText("100% Compleat."); 
+		l3.setText(ix4 + " repeats.");
+		printx();
+		loadx();
 
 	}//repeatx
 
 
 
 	public void repeatxx(){
-	for (int loop1 = loopc1; loop1 < thisx; loop1++){
- 
-	//System.out.println("loooop2 " + loop1);
 
-	ix0 = gold[loop1].indexOf("<*SS*>");
+		for (int loop1 = loopc1; loop1 < thisx; loop1++){
+	 
+			//System.out.println("loooop2 " + loop1);
 
-	if(ix0 > -1){rep2 = gold[loop1].substring(0, ix0);}
-	else{rep2 = gold[loop1];}
+			ix0 = gold[loop1].indexOf("<*SS*>");
 
-	if(rep1.equals(rep2)){gold[loop1] = "<*RR*>" + gold[loop1]; ix4++;}
-	else{}
+			if(ix0 > -1){rep2 = gold[loop1].substring(0, ix0);}
+			else{rep2 = gold[loop1];}
 
-	}//for
+			if(rep1.equals(rep2)){gold[loop1] = "<*RR*>" + gold[loop1]; ix4++;}
+			else{}
+
+		}//for
+
 	}//print1
 
 
@@ -660,24 +674,25 @@ Icon imx0;
 
 	public void replacename(){
 
-	cx0 = cx3;
-	cx1 = sectionxa.getText();
-	cx2 = sectionxb.getText();
+		cx0 = cx3;
+		cx1 = sectionxa.getText();
+		cx2 = sectionxb.getText();
 
-	for (int loop1 = 0; loop1 < runs; loop1++){
+		for (int loop1 = 0; loop1 < runs; loop1++){
 
-	ix0 = cx0.indexOf(cx1);
-	if(ix0 == -1){break;}
-	else{
+			ix0 = cx0.indexOf(cx1);
 
-	cx0 = cx0.substring(0, ix0) + cx2 + cx0.substring(ix0 + sectionxa.getText().length(), cx0.length());
-	cx3 = cx0;
+			if(ix0 == -1){break;}
+			else{
 
-	}//else
+				cx0 = cx0.substring(0, ix0) + cx2 + cx0.substring(ix0 + sectionxa.getText().length(), cx0.length());
+				cx3 = cx0;
 
-	}//for
+			}//else
 
-	System.out.println(cx3);
+		}//for
+
+		System.out.println(cx3);
 
 	}//replacename
 
@@ -691,77 +706,77 @@ Icon imx0;
 	public void imagechange1(){
 
 
-	if(file_image_1.exists()){
-	carbonfiber = file_image_1.list();
+		if(file_image_1.exists()){
+		carbonfiber = file_image_1.list();
 
-	thisx = carbonfiber.length;
+		thisx = carbonfiber.length;
 
-	l3.setText("cs_image found: " + Integer.toString(thisx));
-	}//
-	else{l3.setText("cs_image folder was not found.");}
-
-
-        File in = new File("");
-	File out = new File("");
+		l3.setText("cs_image found: " + Integer.toString(thisx));
+		}//
+		else{l3.setText("cs_image folder was not found.");}
 
 
-	for(int xloopx0 = 0; xloopx0 < thisx; xloopx0++){//********************************************
-
-	if(carbonfiber[xloopx0].equals("Thumbs.db")){}
-	else if(carbonfiber[xloopx0].equals("imager.jar")){}
-	else if(carbonfiber[xloopx0].equals("imager2.java")){}
-	else if(carbonfiber[xloopx0].equals("imager2.class")){}
-	else{//**>
+	        File in = new File("");
+		File out = new File("");
 
 
-	l0.setText((xloopx0 * 100 / thisx) + "% Compleat."); 
-	l3.setText(carbonfiber[xloopx0]); 
+		for(int xloopx0 = 0; xloopx0 < thisx; xloopx0++){//********************************************
 
-	try{
-
-        in = new File("cs_images\\" + carbonfiber[xloopx0]); 
-
-	BufferedInputStream imageStream = new BufferedInputStream(new FileInputStream("cs_images\\" + carbonfiber[xloopx0]));
- 
-	Image image = (Image) ImageIO.read(imageStream);
+		if(carbonfiber[xloopx0].equals("Thumbs.db")){}
+		else if(carbonfiber[xloopx0].equals("imager.jar")){}
+		else if(carbonfiber[xloopx0].equals("imager2.java")){}
+		else if(carbonfiber[xloopx0].equals("imager2.class")){}
+		else{//**>
 
 
-	//System.out.println(image);
+		l0.setText((xloopx0 * 100 / thisx) + "% Compleat."); 
+		l3.setText(carbonfiber[xloopx0]); 
 
-	     int thumbWidth = image.getHeight(null);
-	     int thumbHeight = image.getWidth(null);
- 
-	BufferedImage thumbImage = new BufferedImage(thumbWidth, thumbHeight, BufferedImage.TYPE_INT_RGB);
+		try{
 
-        Graphics2D g2dx = thumbImage.createGraphics(); 
+	        in = new File("cs_images\\" + carbonfiber[xloopx0]); 
 
-        g2dx.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2dx.drawImage(image, 0, 0, thumbWidth, thumbHeight, null);
-	//g2dx.drawLine(0,0,300,300);
+		BufferedInputStream imageStream = new BufferedInputStream(new FileInputStream("cs_images\\" + carbonfiber[xloopx0]));
+	 
+		Image image = (Image) ImageIO.read(imageStream);
 
 
-        // Write the scaled image to the outputstream
+		//System.out.println(image);
 
-	cx3 = carbonfiber[xloopx0];
-	replacename();
-	cx4 = carbonfiber[xloopx0];
-	carbonfiber[xloopx0] = cx3; 
+		     int thumbWidth = image.getHeight(null);
+		     int thumbHeight = image.getWidth(null);
+	 
+		BufferedImage thumbImage = new BufferedImage(thumbWidth, thumbHeight, BufferedImage.TYPE_INT_RGB);
 
-        out = new File("cs_images\\" + carbonfiber[xloopx0]); 
+	        Graphics2D g2dx = thumbImage.createGraphics(); 
 
-        ImageIO.write(thumbImage, "jpeg", out);
+	        g2dx.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+	        g2dx.drawImage(image, 0, 0, thumbWidth, thumbHeight, null);
+		//g2dx.drawLine(0,0,300,300);
 
-	imageStream.close();
 
-	if(out.exists() && !out.equals(in)){in.delete();}
+	        // Write the scaled image to the outputstream
 
-	}catch (IOException e){System.out.println("get file fail");}
+		cx3 = carbonfiber[xloopx0];
+		replacename();
+		cx4 = carbonfiber[xloopx0];
+		carbonfiber[xloopx0] = cx3; 
 
-	}//for******************************************************************************************
+	        out = new File("cs_images\\" + carbonfiber[xloopx0]); 
 
-	}//else**>
+	        ImageIO.write(thumbImage, "jpeg", out);
 
-	l0.setText("100% Compleat."); 
+		imageStream.close();
+
+		if(out.exists() && !out.equals(in)){in.delete();}
+
+		}catch (IOException e){System.out.println("get file fail");}
+
+		}//for******************************************************************************************
+
+		}//else**>
+
+		l0.setText("100% Compleat."); 
 
 	}//imagechange
 
@@ -778,73 +793,78 @@ Icon imx0;
 	public void imagechange2(){//change size
 
 
-	if(file_image_1.exists()){
-	carbonfiber = file_image_1.list();
+		if(file_image_1.exists()){
 
-	thisx = carbonfiber.length;
+			carbonfiber = file_image_1.list();
 
-	l3.setText("cs_image found: " + Integer.toString(thisx));
-	}//
-	else{l3.setText("cs_image folder was not found.");}
+			thisx = carbonfiber.length;
 
+			l3.setText("cs_image found: " + Integer.toString(thisx));
 
-
-	l0.setText(Integer.toString(thisx));
-	//l3.setText(carbonfiber[0]);
-
-
-	for(int xloopx0 = 0; xloopx0 < thisx; xloopx0++){//********************************************
-
-	if(carbonfiber[xloopx0].equals("Thumbs.db")){}
-	else if(carbonfiber[xloopx0].equals("imager.jar")){}
-	else if(carbonfiber[xloopx0].equals("imager2.java")){}
-	else if(carbonfiber[xloopx0].equals("imager2.class")){}
-	else{//********************************>
-
-	l0.setText((xloopx0 * 100 / thisx) + "% Compleat."); 
-	//l1.setText(carbonfiber[xloopx0]); 
-
-	try{
-
-	BufferedInputStream imageStream = new BufferedInputStream(new FileInputStream("cs_images\\" + carbonfiber[xloopx0]));
- 
-	Image image = (Image) ImageIO.read(imageStream);
+		}//
+		else{l3.setText("cs_image folder was not found.");}
 
 
 
-	if(ix1 < image.getHeight(null) && ix0 < image.getWidth(null)){//***************************************
-	System.out.println("FIX " + carbonfiber[xloopx0]);
-
-	ix0 = Integer.parseInt(sectionxa.getText());
-	ix1 = Integer.parseInt(sectionxb.getText());
- 
-	BufferedImage thumbImage = new BufferedImage(ix0, ix1, BufferedImage.TYPE_INT_RGB);
-
-        Graphics2D g2dx = thumbImage.createGraphics(); 
-
-        g2dx.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2dx.drawImage(image, 0, 0, ix0, ix1, null);
-	//g2dx.drawLine(0,0,300,300);
+		l0.setText(Integer.toString(thisx));
+		//l3.setText(carbonfiber[0]);
 
 
-        // Write the scaled image to the outputstream
-     	File out = new File("cs_images\\" + carbonfiber[xloopx0]);          
+		for(int xloopx0 = 0; xloopx0 < thisx; xloopx0++){//********************************************
 
-        ImageIO.write(thumbImage, "jpeg", out);
+			if(carbonfiber[xloopx0].equals("Thumbs.db")){}
+			else if(carbonfiber[xloopx0].equals("imager.jar")){}
+			else if(carbonfiber[xloopx0].equals("imager2.java")){}
+			else if(carbonfiber[xloopx0].equals("imager2.class")){}
+			else{//********************************>
+
+				l0.setText((xloopx0 * 100 / thisx) + "% Compleat."); 
+				//l1.setText(carbonfiber[xloopx0]); 
+
+				try{
+
+					BufferedInputStream imageStream = new BufferedInputStream(new FileInputStream("cs_images\\" + carbonfiber[xloopx0]));
+				 
+					Image image = (Image) ImageIO.read(imageStream);
 
 
-	}//*****************************************************************************************************
-	else{System.out.println("IMAGE TOO SMALL " + image.getHeight(null) + " " +  image.getWidth(null) + " " + carbonfiber[xloopx0]);}
 
-	imageStream.close();
+					if(ix1 < image.getHeight(null) && ix0 < image.getWidth(null)){//***************************************
 
-	}catch (IOException e){System.out.println("get file fail");}
+						System.out.println("FIX " + carbonfiber[xloopx0]);
 
-	}//for******************************************************************************************
+						ix0 = Integer.parseInt(sectionxa.getText());
+						ix1 = Integer.parseInt(sectionxb.getText());
+					 
+						BufferedImage thumbImage = new BufferedImage(ix0, ix1, BufferedImage.TYPE_INT_RGB);
+
+				        Graphics2D g2dx = thumbImage.createGraphics(); 
+
+				        g2dx.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+				        g2dx.drawImage(image, 0, 0, ix0, ix1, null);
+						//g2dx.drawLine(0,0,300,300);
 
 
-	l0.setText("100% Compleat."); 
-	}//else ********************************>
+				        // Write the scaled image to the outputstream
+				     	File out = new File("cs_images\\" + carbonfiber[xloopx0]);          
+
+				        ImageIO.write(thumbImage, "jpeg", out);
+
+
+					}//*****************************************************************************************************
+					else{System.out.println("IMAGE TOO SMALL " + image.getHeight(null) + " " +  image.getWidth(null) + " " + carbonfiber[xloopx0]);}
+
+					imageStream.close();
+
+				}catch (IOException e){System.out.println("get file fail");}
+
+			}//else******************************************************************************************
+
+
+			l0.setText("100% Compleat."); 
+
+		}//for ********************************>
+
 	}//imagechange
 
 
@@ -859,73 +879,75 @@ Icon imx0;
 
 	public void imagex(){//delete CSV records that don't have images
 
-	String[][] carbon1 = new String[20][runs];
+		String[][] carbon1 = new String[20][runs];
 
-	csv_loader1 xcsvx1 = new csv_loader1(file_open_3);
-	carbon1 = xcsvx1.getData0();
-	kcountxx = xcsvx1.getData1();
-	kcountxx2 = xcsvx1.getData2();
-
-
-	cx1 = sectionxa.getText();
-	cx2 = sectionxb.getText();
-
-	ix0 = 0;
-	ix1 = 0;
+		csv_loader1 xcsvx1 = new csv_loader1(file_open_3);
+		carbon1 = xcsvx1.getData0();
+		kcountxx = xcsvx1.getData1();
+		kcountxx2 = xcsvx1.getData2();
 
 
-	if(cx1.length() < 1){cx1 = Integer.toString(kcountxx -1);}	
+		cx1 = sectionxa.getText();
+		cx2 = sectionxb.getText();
+
+		ix0 = 0;
+		ix1 = 0;
 
 
-
-	for (int loop1 = 0; loop1 < kcountxx2; loop1++){//**********************
-
-	l0.setText((loop1 * 100 / kcountxx2) + "% Compleat."); 
-
-	cx0 = carbon1[Integer.parseInt(cx1)][loop1];
-
-	ix4 = cx0.indexOf("Image file name: ");
-	if(ix4 > -1){cx0 = cx0.substring(17, cx0.length());}
-	else{}
-
-	ix0 = 0;
-
-	//System.out.println(cx0);
-
-		for (int loop2 = 0; loop2 < carbonfiber.length; loop2++){
-
-		if(carbonfiber[loop2].equals(cx0)){ix0++; break;}
-
-		}//for*****************************************************
-
-
-	if(ix0 == 0){ix1++; l3.setText(ix1 + " Sections with no images."); carbon1[0][loop1] = "<no image>" + carbon1[0][loop1];}
-	else{}//else
-
-
-	}//for******************************************
-
-	l0.setText("100% Compleat.");
-	System.out.println(cx3);
+		if(cx1.length() < 1){cx1 = Integer.toString(kcountxx -1);}	
 
 
 
+		for (int loop1 = 0; loop1 < kcountxx2; loop1++){//**********************
+
+			l0.setText((loop1 * 100 / kcountxx2) + "% Compleat."); 
+
+			cx0 = carbon1[Integer.parseInt(cx1)][loop1];
+
+			ix4 = cx0.indexOf("Image file name: ");
+			if(ix4 > -1){cx0 = cx0.substring(17, cx0.length());}
+			else{}
+
+			ix0 = 0;
+
+			//System.out.println(cx0);
+
+			for (int loop2 = 0; loop2 < carbonfiber.length; loop2++){
+
+				if(carbonfiber[loop2].equals(cx0)){ix0++; break;}
+
+			}//for*****************************************************
 
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter(file_open));
+			if(ix0 == 0){ix1++; l3.setText(ix1 + " Sections with no images."); carbon1[0][loop1] = "<no image>" + carbon1[0][loop1];}
+			else{}//else
 
-	for (int loop0 = 0; loop0 < kcountxx2; loop0++){
-	for (int loop1 = 0; loop1 < kcountxx; loop1++){
 
-	out.write(carbon1[loop1][loop0] + ",");
+		}//for******************************************
 
-	}//for
-	out.newLine();
-	}//for
+		l0.setText("100% Compleat.");
+		System.out.println(cx3);
 
-        out.close();
-        }catch(IOException e){System.out.println("print fail.");}
+
+
+
+
+		try {
+
+	        BufferedWriter out = new BufferedWriter(new FileWriter(file_open));
+
+			for (int loop0 = 0; loop0 < kcountxx2; loop0++){
+			for (int loop1 = 0; loop1 < kcountxx; loop1++){
+
+			out.write(carbon1[loop1][loop0] + ",");
+
+			}//for
+			out.newLine();
+			}//for
+
+	    	out.close();
+
+	   	}catch(IOException e){System.out.println("print fail.");}
 
 
 
@@ -960,18 +982,20 @@ Icon imx0;
 	public void printx(){
 
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("XMXR.CSV"));
+		try {
 
-	for (int loop1 = 0; loop1 < thisx; loop1++){
+	        BufferedWriter out = new BufferedWriter(new FileWriter("XMXR.CSV"));
 
-	if(gold[loop1].equals("****")){}
-	else{out.write(gold[loop1]); out.newLine();}
+			for (int loop1 = 0; loop1 < thisx; loop1++){
 
-	}//for
+				if(gold[loop1].equals("****")){}
+				else{out.write(gold[loop1]); out.newLine();}
 
-        out.close();
-        }catch(IOException e){System.out.println("print fail.");}
+			}//for
+
+	    	out.close();
+
+	    } catch (IOException e) {System.out.println("print fail.");}
 
 	}//printx
 
@@ -984,51 +1008,55 @@ Icon imx0;
 
 	public void undo_edit(){
 
-	System.out.println(switchsx1);
-	System.out.println(switchsx2);
+		System.out.println(switchsx1);
+		System.out.println(switchsx2);
 
 
-	kcountxx = 0;
-	thisx = 0;
-	main = new String("");
+		kcountxx = 0;
+		thisx = 0;
+		main = new String("");
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader(switchsx1));
-	String str0;
-	while ((str0 = in.readLine()) != null) {gold[thisx] = str0; thisx++;}
-	in.close();} 
-	catch (IOException e) {System.out.println("s00001");}
+		try {
 
-	//System.out.println(kcountxx);
-	//System.out.println("");
-	l0.setText(Integer.toString(thisx) + " Items.");
-	linex0.setText(gold[0]);
+			BufferedReader in = new BufferedReader(new FileReader(switchsx1));
+			String str0;
+			while ((str0 = in.readLine()) != null) {gold[thisx] = str0; thisx++;}
+			in.close();
+
+		} catch (IOException e) {e.printStackTrace();}
+
+		//System.out.println(kcountxx);
+		//System.out.println("");
+		l0.setText(Integer.toString(thisx) + " Items.");
+		linex0.setText(gold[0]);
 
 
 
 
-	if(file_open_3.exists()){
+		if (file_open_3.exists()){
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter(switchsx2));
+			try {
 
-	for (int loop1 = 0; loop1 < thisx; loop1++){
+			    BufferedWriter out = new BufferedWriter(new FileWriter(switchsx2));
 
-	if(gold[loop1].equals("****")){}
-	else{out.write(gold[loop1]); out.newLine();}
+				for (int loop1 = 0; loop1 < thisx; loop1++){
 
-	}//for
+					if(gold[loop1].equals("****")){}
+					else{out.write(gold[loop1]); out.newLine();}
 
-        out.close();
-        }catch(IOException e){l3.setText("s00002");}
+				}//for
 
-	//File f1 = new File("XMXR.CSV");
-	//f1.delete();
+		        out.close();
 
-	loadx();
+		    } catch (IOException e) {l3.setText("s00002");}
 
-	}//if*********************
-	else{l0.setText("Can't find backup file!");}
+			//File f1 = new File("XMXR.CSV");
+			//f1.delete();
+
+			loadx();
+
+		}//if*********************
+		else {l0.setText("Can't find backup file!");}
 
 	}//switchx
 
@@ -1043,40 +1071,44 @@ Icon imx0;
 	public void undo_edit_start(){
 
 
-	kcountxx = 0;
-	thisx = 0;
-	main = new String("");
+		kcountxx = 0;
+		thisx = 0;
+		main = new String("");
 
-	try {
-	BufferedReader in = new BufferedReader(new FileReader(switchsx1));
-	String str0;
-	while ((str0 = in.readLine()) != null) {gold[thisx] = str0; thisx++;}
-	in.close();} 
-	catch (IOException e) {System.out.println("s00001");}
+		try {
 
-	//System.out.println(kcountxx);
-	//System.out.println("");
-	l0.setText(Integer.toString(thisx) + " Items.");
-	linex0.setText(gold[0]);
+			BufferedReader in = new BufferedReader(new FileReader(switchsx1));
+			String str0;
+			while ((str0 = in.readLine()) != null) {gold[thisx] = str0; thisx++;}
+			in.close();
+
+		} catch (IOException e) {e.printStackTrace();}
+
+		//System.out.println(kcountxx);
+		//System.out.println("");
+		l0.setText(Integer.toString(thisx) + " Items.");
+		linex0.setText(gold[0]);
 
 
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter(switchsx2));
+		try {
 
-	for (int loop1 = 0; loop1 < thisx; loop1++){
+		    BufferedWriter out = new BufferedWriter(new FileWriter(switchsx2));
 
-	if(gold[loop1].equals("****")){}
-	else{out.write(gold[loop1]); out.newLine();}
+			for (int loop1 = 0; loop1 < thisx; loop1++){
 
-	}//for
+				if(gold[loop1].equals("****")){}
+				else{out.write(gold[loop1]); out.newLine();}
 
-        out.close();
-        }catch(IOException e){l3.setText("s00002");}
+			}//for
 
-	//File f1 = new File("XMXR.CSV");
-	//f1.delete();
+	        out.close();
 
-	loadx();
+	    }catch(IOException e){l3.setText("s00002");}
+
+		//File f1 = new File("XMXR.CSV");
+		//f1.delete();
+
+		loadx();
 
 
 	}//switchx
@@ -1101,156 +1133,156 @@ Icon imx0;
 
 	public void cleancsv(){
 
-	//loadx();
-	sectionxa.setText(",");
-	sectionxb.setText("<...>");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText(",");
+		sectionxb.setText("<...>");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("<*<...>*>");
-	sectionxb.setText(",");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("<*<...>*>");
+		sectionxb.setText(",");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("\"");
-	sectionxb.setText("&quot;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("\"");
+		sectionxb.setText("&quot;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â„¢");
-	sectionxb.setText("&#188;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â„¢");
+		sectionxb.setText("&#188;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Â°");
-	sectionxb.setText("&#176;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Â°");
+		sectionxb.setText("&#176;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â€”");
-	sectionxb.setText("&nbsp;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â€”");
+		sectionxb.setText("&nbsp;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â€?");
-	sectionxb.setText("''");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â€?");
+		sectionxb.setText("''");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Ã†");
-	sectionxb.setText("®");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Ã†");
+		sectionxb.setText("®");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Ã«");
-	sectionxb.setText("ë");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Ã«");
+		sectionxb.setText("ë");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Ã©");
-	sectionxb.setText("é");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Ã©");
+		sectionxb.setText("é");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Æ’");
-	sectionxb.setText("&#402;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Æ’");
+		sectionxb.setText("&#402;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Ã“");
-	sectionxb.setText("Ó");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Ã“");
+		sectionxb.setText("Ó");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Ã˜");
-	sectionxb.setText("Ø");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Ã˜");
+		sectionxb.setText("Ø");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Ã—");
-	sectionxb.setText("x");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Ã—");
+		sectionxb.setText("x");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Â®");
-	sectionxb.setText("&reg;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Â®");
+		sectionxb.setText("&reg;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Â¾");
-	sectionxb.setText("&#190;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Â¾");
+		sectionxb.setText("&#190;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("Â±");
-	sectionxb.setText("&#177;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("Â±");
+		sectionxb.setText("&#177;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("ÂµV");
-	sectionxb.setText("µV");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("ÂµV");
+		sectionxb.setText("µV");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â€“");
-	sectionxb.setText("-");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â€“");
+		sectionxb.setText("-");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â€™");
-	sectionxb.setText("&#39;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â€™");
+		sectionxb.setText("&#39;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("ï¿½");
-	sectionxb.setText("™");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("ï¿½");
+		sectionxb.setText("™");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â€œ");
-	sectionxb.setText("&quot;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â€œ");
+		sectionxb.setText("&quot;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â€¦");
-	sectionxb.setText("&#8230;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â€¦");
+		sectionxb.setText("&#8230;");
+		replacex();
+		printx();
 
-	//loadx();
-	sectionxa.setText("â?„");
-	sectionxb.setText("&#47;");
-	replacex();
-	printx();
+		//loadx();
+		sectionxa.setText("â?„");
+		sectionxb.setText("&#47;");
+		replacex();
+		printx();
 
 
 
-	l0.setText("Cleanup Compleat.");
+		l0.setText("Cleanup Compleat.");
 
-	sectionxa.setText("");
-	sectionxb.setText("");
+		sectionxa.setText("");
+		sectionxb.setText("");
 
 	}//cleancsv
 
@@ -1262,11 +1294,11 @@ Icon imx0;
 
 	public void openx(){
 	
-   	file_chooser.showOpenDialog(frame_1);
-   	if(file_chooser.APPROVE_OPTION == 0){file_open_1 = file_chooser.getSelectedFile(); frame_1.dispose();}
-	else{frame_1.dispose();}
+	   	file_chooser.showOpenDialog(frame_1);
+	   	if(file_chooser.APPROVE_OPTION == 0){file_open_1 = file_chooser.getSelectedFile(); frame_1.dispose();}
+		else{frame_1.dispose();}
 
-	loadx();
+		loadx();
 
 	}//openx
 
@@ -1276,9 +1308,9 @@ Icon imx0;
 
 	public void save_undo_file(){
 
-	switchsx1 = "XMXR.CSV";
-	switchsx2 = "XMXRUndo.CSV";
-	undo_edit_start();
+		switchsx1 = "XMXR.CSV";
+		switchsx2 = "XMXRUndo.CSV";
+		undo_edit_start();
 
 	}//save undo file
 
@@ -1291,28 +1323,32 @@ Icon imx0;
 
 	public void save_split(){
 
-	loadx();
-	ix1 = 0;
-	ix2 = Integer.parseInt(sectionxa.getText());
+		loadx();
+		ix1 = 0;
+		ix2 = Integer.parseInt(sectionxa.getText());
 
 
-	for (int loop1 = 0; loop1 < thisx; loop1++){
-	
-	try {
-        BufferedWriter out = new BufferedWriter(new FileWriter("sec_" + loop1 + ".CSV"));
+		for (int loop1 = 0; loop1 < thisx; loop1++){
+		
+			try {
+		        
+		        BufferedWriter out = new BufferedWriter(new FileWriter("sec_" + loop1 + ".CSV"));
 
-	for (int loop2 = 0; loop2 < ix2; loop2++){
-	out.write(gold[ix1]); out.newLine(); 
-	ix1++; 
-	if(ix1 >= thisx){break;}
-	}//for
+				for (int loop2 = 0; loop2 < ix2; loop2++){
 
-        out.close();
-        } catch (IOException e) {System.out.println("print fail.");}
+					out.write(gold[ix1]); out.newLine(); 
+					ix1++; 
+					if(ix1 >= thisx){break;}
 
-	if(ix1 >= thisx){break;}
+				}//for
 
-	}//for
+		        out.close();
+
+		    } catch (IOException e) {System.out.println("print fail.");}
+
+			if(ix1 >= thisx){break;}
+
+		}//for
 
 
 	}//save undo file
@@ -1347,7 +1383,7 @@ public void actionPerformed(ActionEvent event){
 
     public static void main(String[] args){
 
-	replace xr = new replace();
+		replace xr = new replace();
 
     }//main
 
